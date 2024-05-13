@@ -24,6 +24,6 @@ public class Position {
     @JoinColumn(name = "department_id", nullable = false)
     private Departments department;
 
-    @OneToMany(targetEntity = Requirements.class, mappedBy = "positionId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Requirements> requirementsId;
+    @OneToMany(targetEntity = Requirements.class, mappedBy = "position", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Requirements> requirements;
 }

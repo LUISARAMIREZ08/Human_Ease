@@ -32,6 +32,6 @@ public class CandidateApplications {
 
     @ManyToOne(targetEntity = JobOffer.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "job_offer_id", nullable = false)
-    private JobOffer jobOfferId;
+    private JobOffer jobOffer;
 }
 

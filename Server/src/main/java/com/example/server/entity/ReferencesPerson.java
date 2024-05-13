@@ -26,5 +26,5 @@ public class ReferencesPerson {
 
     @ManyToOne(targetEntity = CandidateApplications.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "candidate_application_id", nullable = false)
-    private CandidateApplications candidateApplicationsId;
+    private CandidateApplications candidateApplications;
 }
