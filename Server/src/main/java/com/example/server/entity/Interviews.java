@@ -38,6 +38,6 @@ public class Interviews {
 
     @ManyToOne(targetEntity = Person.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "candidate_application_id", nullable = false)
-    private CandidateApplications candidateApplicationsId;
+    private CandidateApplications candidateApplications;
 }
 

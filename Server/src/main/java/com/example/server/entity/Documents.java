@@ -16,7 +16,7 @@ public class Documents {
     private String documentName;
     private String documentPath;
 
-    @ManyToOne(targetEntity = Person.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Person.class, fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "card_id", nullable = false)
-    private Person personId;
+    private Person person;
 }

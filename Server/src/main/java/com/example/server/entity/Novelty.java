@@ -38,11 +38,11 @@ public class Novelty {
 
     @ManyToOne(targetEntity = Concept.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "concept_id")
-    private Concept conceptId;
+    private Concept concept;
 
     @ManyToOne(targetEntity = Periods.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "period_id", nullable = false)
-    private Periods periodId;
+    private Periods period;
 
 }
 

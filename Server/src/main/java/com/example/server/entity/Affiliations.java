@@ -35,7 +35,7 @@ public class Affiliations {
 
     @ManyToOne(targetEntity = Employee.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id", nullable = false)
-    private Employee employeeId;
+    private Employee employee;
 
 }
 

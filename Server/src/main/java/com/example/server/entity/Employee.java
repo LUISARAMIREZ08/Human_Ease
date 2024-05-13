@@ -28,14 +28,14 @@ public class Employee {
 
     @OneToOne(targetEntity = Person.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "card_id", nullable = false)
-    private Person cardId;
+    private Person person;
 
     @ManyToOne(targetEntity = CostCenter.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "cost_center_id", nullable = false)
-    private CostCenter costCenterId;
+    private CostCenter costCenter;
 
     @ManyToOne(targetEntity = Position.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "position_id", nullable = false)
-    private Position positionId;
+    private Position position;
 }
 

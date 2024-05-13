@@ -20,6 +20,6 @@ public class Requirements {
 
     @ManyToOne(targetEntity = Position.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "position_id", nullable = false)
-    private Position positionId;
+    private Position position;
 
 }

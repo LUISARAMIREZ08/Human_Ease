@@ -36,10 +36,10 @@ public class JobOffer {
 
     @ManyToOne(targetEntity = Position.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "position_id", nullable = false)
-    private Position positionId;
+    private Position position;
 
     @ManyToOne(targetEntity = Employee.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id", nullable = false)
-    private Employee employeeId;
+    private Employee employee;
 }
 
