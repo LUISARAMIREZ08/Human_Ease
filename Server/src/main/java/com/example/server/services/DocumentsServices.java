@@ -46,7 +46,6 @@ public class DocumentsServices {
     //This method updates a document by id
     public Documents updateDocumentById(Documents request, Long id) {
         Documents document = documentsRepository.findById(id).get();
-        document.setDocumentId(request.getDocumentId());
         document.setDocumentName(request.getDocumentName());
         document.setDocumentPath(request.getDocumentPath());
         document.setPerson(request.getPerson());

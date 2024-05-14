@@ -27,7 +27,6 @@ public class PersonServices {
     // This method updates a person by id
     public Person updatePersonById(Person request, Long id){
         Person person = personRepository.findById(id).get();
-        person.setCardId(request.getCardId());
         person.setUserName(request.getUserName());
         person.setName(request.getName());
         person.setLastName(request.getLastName());
