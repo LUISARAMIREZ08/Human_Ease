@@ -45,11 +45,15 @@ public class DocumentsServices {
     }
     //This method updates a document by id
     public Documents updateDocumentById(Documents request, Long id) {
-        Documents document = documentsRepository.findById(id).get();
-        document.setDocumentName(request.getDocumentName());
-        document.setDocumentPath(request.getDocumentPath());
-        document.setPerson(request.getPerson());
-        return documentsRepository.save(document);
+        Optional<Documents> document = documentsRepository.findById(id);
+        if (document.isPresent()){
+            document.get().setDocumentName(request.getDocumentName());
+            document.get().setDocumentPath(request.getDocumentPath());
+            return documentsRepository.save(document.get());
+        } else {
+            throw new RuntimeException("Document not found with id " + id);
+        }
+
     }
     //This method deletes a document by id
     public Boolean deleteDocument(Long id) {
