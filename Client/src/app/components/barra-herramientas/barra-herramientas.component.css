@@ -1,0 +1,28 @@
+.tool-bar-container {
+    width: 50px;
+    border-radius: 10px;
+    padding-left: 20px;
+    float: left;
+}
+
+.tool-bar-container ul {
+    list-style: none;
+    background-color: #efefef;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.tool-bar-container ul li {
+    padding-top: 5px;
+}
+
+.tool-bar-container ul li img {
+   filter: invert(0.9);
+}
+
+.tool-bar-container ul li img:hover {
+    filter: invert(0.1);
+}
