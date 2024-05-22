@@ -1,0 +1,60 @@
+<app-header></app-header>
+<app-barra-herramientas></app-barra-herramientas>
+
+<div class="form-container">
+    <h1 class="roboto-bold">Crear Postulación</h1>
+    <form class="roboto-light" action="">
+        <div class="form-group">
+            <label for="tittle">Titulo</label>
+            <input type="text" placeholder="Titulo de la postulación" class="input" id="tittle">
+        </div>
+        
+        <div class="form-group">
+            <label for="fecha">Fecha</label>
+            <input type="date" placeholder="Fecha de la postulación" class="input" id="fecha">
+        </div>
+
+        <div class="form-group">
+            <label for="fecha-cierre">Fecha de cierre</label>
+            <input type="date" placeholder="Fecha de cierre de la postulación" class="input" id="fecha-cierre">
+        </div>
+
+        <div class="form-group">
+            <label for="cargo">Cargo</label>
+            <select name="cargo" id="cargo" class="input">
+                <option value="">Seleccionar cargo</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="departamento">Departamento</label>
+            <input type="text" placeholder="Departamento del cargo" class="input" id="departamento">
+        </div>
+
+        <div class="form-group">
+            <label for="experiencia">Nivel de experiencia</label>
+            <input type="text" placeholder="Nivel de experiencia del cargo" class="input" id="experiencia">
+        </div>
+
+        <div class="form-group">
+            <label for="tiempo">Tiempo de empleo</label>
+            <input type="text" placeholder="Jornada del empleo" class="input" id="tiempo">
+        </div>
+
+        <div class="form-group">
+            <label for="lider">Lider del proceso</label>
+            <select name="" id="lider" class="input">
+                <option value="">Seleccionar lider</option>
+            </select>
+        </div>
+
+        <div class="form-group full-width">
+            <label for="descripcion">Descripción</label>
+            <textarea name="" id="descripcion" class="input"></textarea>
+        </div>
+
+        <div class="button">
+            <button type="submit" class="submit-button">Crear postulación</button>
+        </div>
+    </form>
+</div>
