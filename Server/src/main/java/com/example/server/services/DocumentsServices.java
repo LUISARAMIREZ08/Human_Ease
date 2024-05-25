@@ -1,9 +1,9 @@
 package com.example.server.services;
 
 import com.example.server.entity.Documents;
-import com.example.server.entity.Person;
+import com.example.server.entity.UserEntity;
 import com.example.server.repository.IDocumentsRepository;
-import com.example.server.repository.IPersonRepository;
+import com.example.server.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ public class DocumentsServices {
     IDocumentsRepository documentsRepository;
 
     @Autowired
-    IPersonRepository personRepository;
+    IUserRepository userRepository;
     //This method returns all the documents in the database
     public List<Documents> getAllDocuments() {
         return documentsRepository.findAll();
@@ -27,20 +27,20 @@ public class DocumentsServices {
     }
     //This method returns all the documents by person card id
     public List<Documents> getDocumentsByPersonCardId(Long cardId) {
-        return documentsRepository.findByPersonCardId(cardId);
+        return documentsRepository.findDocumentsByUserEntity_CardId(cardId);
     }
     //This method saves a document to the database
-    public Documents saveDocument(String documentName, String documentPath, Long personId) {
+    public Documents saveDocument(String documentName, String documentPath, Long userId) {
         Documents document = new Documents();
         document.setDocumentName(documentName);
         document.setDocumentPath(documentPath);
 
-        Optional<Person> personOptional = personRepository.findById(personId);
-        if (personOptional.isPresent()) {
-            document.setPerson(personOptional.get());
+        Optional<UserEntity> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()) {
+            document.setUserEntity(userOptional.get());
             return documentsRepository.save(document);
         } else {
-            throw new RuntimeException("Person not found with id " + personId);
+            throw new RuntimeException("Person not found with id " + userId);
         }
     }
     //This method updates a document by id

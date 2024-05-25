@@ -9,20 +9,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "record_person")
-public class RecordPerson {
+@Table(name = "referencesPerson")
+public class ReferencesUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long recordId;
+    private Long referenceId;
 
-    @Column(name="record_type", nullable = false, length = 100)
-    private String recordType;
+    @Column(name="reference_name", nullable = false, length = 100)
+    private String referenceName;
 
-    @Column(name="record_result", nullable = false, length = 100)
-    private String recordResult;
+    @Column(name="reference_phone", nullable = false, length = 20)
+    private String referencePhone;
 
-    @Column(name="record_date_verified", nullable = false, length = 100)
-    private String recordDateVerified;
+    @Column(name="reference_email", nullable = false, length = 200)
+    private String referenceResult;
 
     @ManyToOne(targetEntity = CandidateApplications.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "candidate_application_id", nullable = false)

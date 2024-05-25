@@ -1,8 +1,8 @@
 package com.example.server.entity.enums;
 
-public enum RolePerson {
+public enum RoleUser {
     EMPLOYEE,
     CANDIDATE,
     EX_EMPLOYEE,
-    ADMIN
+    ADMIN;
 }
