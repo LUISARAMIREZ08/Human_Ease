@@ -1,15 +1,3 @@
-.roboto-bold {
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-}
-
-.roboto-light {
-    font-family: "Roboto", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-}
-
 .form-container {
     margin-left: 8%;
     margin-top: 1%;
@@ -101,6 +89,3 @@ form button {
     border-bottom: 3px solid #004466; /* Cambia el color del borde inferior al enfocar */
 }
 
-.text-gray {
-    color: #ccc;
-}
