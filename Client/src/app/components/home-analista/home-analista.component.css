@@ -1,15 +1,3 @@
-.roboto-bold {
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-  }
-
-.roboto-ligth {
-    font-family: "Roboto", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-}
-
 .text-container {
     display: flex;
     justify-content: center;
@@ -18,10 +6,7 @@
     margin-top: 10%;
 }
 
-.text-container h1 {
-    font-size: 2.5em;
-    color: #004466
-}
+
 
 .add-button a {
     text-decoration: none;
