@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface IDocumentsRepository extends JpaRepository<Documents, Long> {
-    List<Documents> findByPersonCardId(Long cardId);
+    List<Documents> findDocumentsByUserEntity_CardId(Long cardId);
 }

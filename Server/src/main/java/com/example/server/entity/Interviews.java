@@ -36,7 +36,7 @@ public class Interviews {
     @Enumerated(EnumType.STRING)
     private InterviewType interviewType;
 
-    @ManyToOne(targetEntity = Person.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = UserEntity.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "candidate_application_id", nullable = false)
     private CandidateApplications candidateApplications;
 }

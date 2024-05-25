@@ -26,9 +26,9 @@ public class Employee {
     private StatusEmployee statusEmployee;
 
 
-    @OneToOne(targetEntity = Person.class, cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = UserEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "card_id", nullable = false)
-    private Person person;
+    private UserEntity person;
 
     @ManyToOne(targetEntity = CostCenter.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "cost_center_id", nullable = false)

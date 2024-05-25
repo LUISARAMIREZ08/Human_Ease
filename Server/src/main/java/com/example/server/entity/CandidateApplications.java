@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -26,9 +25,9 @@ public class CandidateApplications {
     @Enumerated(EnumType.STRING)
     private ApplicationStatus applicationStatus;
 
-    @ManyToOne(targetEntity = Person.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "person_id", nullable = false)
-    private Person personId;
+    @ManyToOne(targetEntity = UserEntity.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity userEntity;
 
     @ManyToOne(targetEntity = JobOffer.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "job_offer_id", nullable = false)
