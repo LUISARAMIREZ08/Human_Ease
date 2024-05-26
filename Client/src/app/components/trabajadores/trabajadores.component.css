@@ -1,20 +1,5 @@
-.main-container {
-    margin-left: 8%;
-    margin-top: 1%;
-    padding: 2%;
-    max-width: 80%;
-}
-
 .text-blue {
     color: #00A9FF;
-}
-
-.top-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-
 }
 
 .search-container {

@@ -1,0 +1,28 @@
+.create-button {
+    margin-bottom: 2%;
+}
+
+.create-button a {
+    text-decoration: none;
+    color: white;
+}
+
+.create-button button {
+    background-color: #004466;
+    color: white;
+    border: none;
+    padding: 20px 30px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.create-button button:hover {
+    background-color: #00334d;
+}
+
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
