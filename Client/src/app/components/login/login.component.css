@@ -118,7 +118,9 @@
     width: 60%;
     border-radius: 10px;
     padding-top: 30px;
-    font-size: 16px; 
+    width: 60%;
+    height: 100%;
+    font-size: 14px; 
     flex-direction: column;
 }
 
@@ -187,4 +189,3 @@
 .login-form h4:hover {
     color: #00A9FF;
 }
-
