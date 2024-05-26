@@ -15,18 +15,18 @@ export interface Trabajador {
 }
 
 const ELEMENT_DATA: Trabajador[] = [
-  {id: 1, name: 'Juan', last_name: 'Perez', role_person: 'Cocinero', salary_base: 1000, phone: '123456789'},
-  {id: 2, name: 'Pedro', last_name: 'Ramirez', role_person: 'Mesero', salary_base: 800, phone: '123456789'},
-  {id: 3, name: 'Maria', last_name: 'Gonzalez', role_person: 'Cajero', salary_base: 900, phone: '123456789'},
-  {id: 4, name: 'Ana', last_name: 'Martinez', role_person: 'Cocinero', salary_base: 1000, phone: '123456789'},
-  {id: 5, name: 'Jose', last_name: 'Lopez', role_person: 'Mesero', salary_base: 800, phone: '123456789'},
-  {id: 6, name: 'Luis', last_name: 'Rodriguez', role_person: 'Cajero', salary_base: 900, phone: '123456789'},
-  {id: 7, name: 'Carlos', last_name: 'Hernandez', role_person: 'Cocinero', salary_base: 1000, phone: '123456789'},
-  {id: 8, name: 'Rosa', last_name: 'Gutierrez', role_person: 'Mesero', salary_base: 800, phone: '123456789'},
-  {id: 9, name: 'Sofia', last_name: 'Diaz', role_person: 'Cajero', salary_base: 900, phone: '123456789'},
-  {id: 10, name: 'Fernando', last_name: 'Sanchez', role_person: 'Cocinero', salary_base: 1000, phone: '123456789'},
-  {id: 11, name: 'Luisa', last_name: 'Perez', role_person: 'Mesero', salary_base: 800, phone: '123456789'},
-  {id: 12, name: 'Jorge', last_name: 'Ramirez', role_person: 'Cajero', salary_base: 900, phone: '123456789'},
+  {id: 16273672, name: 'Juan', last_name: 'Perez', role_person: 'Cocinero', salary_base: 1000, phone: '123456789'},
+  {id: 227366351133, name: 'Pedro', last_name: 'Ramirez', role_person: 'Mesero', salary_base: 800, phone: '123456789'},
+  {id: 327366351133, name: 'Maria', last_name: 'Gonzalez', role_person: 'Cajero', salary_base: 900, phone: '123456789'},
+  {id: 427366351133, name: 'Ana', last_name: 'Martinez', role_person: 'Cocinero', salary_base: 1000, phone: '123456789'},
+  {id: 527366351133, name: 'Jose', last_name: 'Lopez', role_person: 'Mesero', salary_base: 800, phone: '123456789'},
+  {id: 627366351133, name: 'Luis', last_name: 'Rodriguez', role_person: 'Cajero', salary_base: 900, phone: '123456789'},
+  {id: 727366351133, name: 'Carlos', last_name: 'Hernandez', role_person: 'Cocinero', salary_base: 1000, phone: '123456789'},
+  {id: 827366351133, name: 'Rosa', last_name: 'Gutierrez', role_person: 'Mesero', salary_base: 800, phone: '123456789'},
+  {id: 927366351133, name: 'Sofia', last_name: 'Diaz', role_person: 'Cajero', salary_base: 900, phone: '123456789'},
+  {id: 1027366351133, name: 'Fernando', last_name: 'Sanchez', role_person: 'Cocinero', salary_base: 1000, phone: '123456789'},
+  {id: 1127366351133, name: 'Luisa', last_name: 'Perez', role_person: 'Mesero', salary_base: 800, phone: '123456789'},
+  {id: 1273663511332, name: 'Jorge', last_name: 'Ramirez', role_person: 'Cajero', salary_base: 900, phone: '123456789'},
 ];
 
 @Component({
