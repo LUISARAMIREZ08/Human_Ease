@@ -1,0 +1,190 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 0%;
+    background-color: #002233;
+    color: white;
+    height: 100vh;
+}
+
+.container-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #002233;
+    color: white;
+    width: 50%;
+    height: 80vh;
+    margin-top: 50px;
+}
+
+.logo-container{
+    display: flex;
+    justify-content: start;
+    background-color: #002233;
+    color: white;
+    width: 80%;
+    height: 80vh;
+    flex-direction: column;
+    margin-left: 130px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    padding-top: 9%;
+}
+
+.line{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    width: 90%;
+    height: 0.5%;
+}
+
+.logo-container h3{
+    display: flex;
+    padding-top: 5%;
+    font-size: 16px;
+    font-weight: normal;
+
+}
+
+.postulation{
+    background-color: #00A9FF;
+    width: 28%;
+    height: 8%;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    margin-top: 18px;
+}
+
+.postulation:hover{
+    background-color: #E5F6FF;
+    color: #002233;
+}
+
+.info {
+    padding-top: 4%;
+}
+
+.info h3 {
+    padding: 0;
+}
+
+.register{
+    background-color: #00A9FF;
+    width: 28%;
+    height: 8%;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    margin-top: 18px;
+}
+
+.register:hover{
+    background-color: #E5F6FF;
+    color: #002233;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    padding: 0%;
+    background-color: #002233;
+    color: white;
+    width: 50%;
+    height: 80vh;
+    margin-top: 50px;
+}
+
+.login-container-white {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background-color: white;
+    color: #002233;
+    width: 60%;
+    border-radius: 10px;
+    padding-top: 30px;
+    font-size: 16px; 
+    flex-direction: column;
+}
+
+.login-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: #002233;
+    width: 80%;
+    height: 100%;
+    flex-direction: column;
+    margin: 30px;
+    gap: 30px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.input {
+    border: none; /* Elimina todos los bordes */
+    border-bottom: 1px solid #004466; /* Agrega solo el borde inferior */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1em;
+    outline: none; /* Elimina el borde de enfoque predeterminado */
+    transition: border-color 0.3s ease; /* Transición para el cambio de color del borde */
+    font-size: 12px;
+}
+
+.input:focus{
+    border-bottom: 3px solid #004466; /* Cambia el color del borde inferior al enfocar */
+}
+
+.login {
+    background-color: #002233;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+.login:hover {
+    background-color: #00A9FF;
+}
+
+.login-form h4 {
+    padding: 0;
+    color: #006599;
+    cursor: pointer;
+}
+
+.login-form h4:hover {
+    color: #00A9FF;
+}
+
