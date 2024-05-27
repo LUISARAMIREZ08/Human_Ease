@@ -1,0 +1,11 @@
+.ver-container button {
+    border: 0;
+    background: none;
+    color: #007bff;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.ver-container button:hover {
+    color: #0056b3;
+}

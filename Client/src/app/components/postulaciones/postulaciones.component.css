@@ -25,4 +25,37 @@
 .mat-mdc-form-field {
     font-size: 14px;
     width: 100%;
+}
+
+.actions-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.action-cell button {
+    background-color: transparent; /* Fondo transparente para que solo se muestre la imagen */
+    border: none; /* Sin borde */
+    border-radius: 10%;
+    width: 40px; /* Tamaño fijo */
+    height: 40px; /* Tamaño fijo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: none;
+    padding: none;
+  }
+  
+  .action-cell button img {
+    width: 20px; /* Tamaño fijo para la imagen */
+    height: 20px; /* Tamaño fijo para la imagen */
+  }
+  
+  .action-cell button:hover {
+    background-color: #004466; /* Cambia el color de fondo al hacer hover */
+  }
+  
+  .action-cell button:hover img {
+    filter: invert(100%) brightness(2); /* Invierte los colores de la imagen al hacer hover */
   }

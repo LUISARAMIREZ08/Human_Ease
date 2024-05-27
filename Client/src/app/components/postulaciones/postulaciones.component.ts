@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import HeaderComponent from '../header/header.component';
 import BarraHerramientasComponent from '../barra-herramientas/barra-herramientas.component';
 
@@ -34,11 +36,24 @@ const ELEMENT_DATA: Postulacion[] = [
   styleUrl: './postulaciones.component.css'
 })
 export default class PostulacionesComponent {
-  displayedColumns: string[] = ['fecha_apertura', 'fecha_cierre', 'titulo_oferta', 'descripcion'];
+  displayedColumns: string[] = ['fecha_apertura', 'fecha_cierre', 'titulo_oferta', 'descripcion', 'accion'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  editPostulacion(element: any): void{
+    console.log(element);
+  }
+
+  deletePostulacion(element: any): void{
+    console.log(element);
+  }
+
+  viewPostulantes(element: any): void{
+    console.log(element);
   }
 }
