@@ -29,6 +29,11 @@ export const routes: Routes = [
  {
   path: 'novedades',
   loadComponent: () => import('./components/novedades/novedades.component')
+ },
+
+ {
+  path: 'postulantes',
+  loadComponent: () => import('./components/postulantes/postulantes.component')
  }
 
 ];
