@@ -34,6 +34,11 @@ export const routes: Routes = [
  {
   path: 'postulantes',
   loadComponent: () => import('./components/postulantes/postulantes.component')
+ },
+ 
+ {
+  path: 'ofertas-laborales',
+  loadComponent: () => import('./components/ofertas-laborales/ofertas-laborales.component')
  }
-
+   
 ];
