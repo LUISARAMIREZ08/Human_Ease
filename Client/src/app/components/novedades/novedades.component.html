@@ -2,4 +2,79 @@
 <app-barra-herramientas></app-barra-herramientas>
 <div class="main-container">
     <h1 class="roboto-bold">Novedades</h1>
+
+    <div class="forms-container roboto-light">
+        <form action="" class="post-form">
+            <h3 class="text-blue roboto-bold">Nueva novedad</h3>
+
+            <label for="fecha">Fecha</label>
+            <input type="date" id="fecha">
+
+            <label for="empleado">Empleado</label>
+            <input type="text" id="empleado">
+
+            <label for="concepto">Concepto</label>
+            <select name="concepto" id="concepto"></select>
+
+            <label for="valor">Valor</label>
+            <input type="number" id="valor">
+
+            <button class="apply-button">Aplicar</button>
+        </form>
+
+        <form action="" class="get-form">
+            <h3 class="text-blue roboto-bold">Listar novedades</h3>
+            
+            <label for="desde">Desde</label>
+            <input type="date" id="desde">
+
+            <label for="hasta">Hasta</label>
+            <input type="date" id="hasta">
+
+            <button class="show-button">Mostrar</button>
+        </form>
+    </div>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
+        <ng-container matColumnDef="fecha">
+          <th mat-header-cell *matHeaderCellDef> Fecha </th>
+          <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cedula">
+            <th mat-header-cell *matHeaderCellDef> Cedula </th>
+            <td mat-cell *matCellDef="let element"> {{element.cedula}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+      
+     
+        <ng-container matColumnDef="concepto">
+          <th mat-header-cell *matHeaderCellDef> Concepto </th>
+          <td mat-cell *matCellDef="let element"> {{element.concepto}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="valor">
+            <th mat-header-cell *matHeaderCellDef> Valor </th>
+            <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef> Descricpión </th>
+            <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="centro_costo">
+            <th mat-header-cell *matHeaderCellDef> Centro de costo </th>
+            <td mat-cell *matCellDef="let element"> {{element.centro_costo}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+      </table>
 </div>
