@@ -1,0 +1,200 @@
+<app-header></app-header>
+<app-barra-herramientas></app-barra-herramientas>
+<div class="main-container">
+    <h1 class="roboto-bold">Nómina</h1>
+    <div class="options">
+        <button [ngClass]="{'active': option === 'periodos'}" class="option" (click)="changeOption('periodos')">
+            <p class="roboto-medium">Periodos</p>
+            <img src="assets/icons/assignment_add.svg" alt="Perido">
+        </button>
+        <button [ngClass]="{'active': option === 'liquidar'}" class="option" (click)="changeOption('liquidar')">
+            <p class="roboto-medium">Liquidar</p>
+            <img src="assets/icons/inventory.svg" alt="Liquidar">
+        </button>
+        <button [ngClass]="{'active': option === 'informes'}" class="option" (click)="changeOption('informes')">
+            <p class="roboto-medium">Informes</p>
+            <img src="assets/icons/export_notes.svg" alt="Informes">
+        </button>
+    </div>
+
+    <div class="tabla-container">
+        <!-- Periodos -->
+        <div *ngIf="option === 'periodos'" class="tabla">
+            <h1 class="roboto-bold title-2">Periodos</h1>
+            <div class="create-button roboto-bold">
+                <button><a href="crear-periodo">Crear periodo</a></button>
+            </div>
+
+            <mat-form-field>
+                <mat-label>Buscar periodo</mat-label>
+                <input matInput (keyup)="applyFilter($event, 'periodos')" placeholder="Buscar" #periodoInput>
+            </mat-form-field>
+
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <!-- Año Column -->
+                <ng-container matColumnDef="ano">
+                    <th mat-header-cell *matHeaderCellDef> Año </th>
+                    <td mat-cell *matCellDef="let element"> {{element.ano}} </td>
+                </ng-container>
+
+                <!-- Mes Column -->
+                <ng-container matColumnDef="mes">
+                    <th mat-header-cell *matHeaderCellDef> Mes </th>
+                    <td mat-cell *matCellDef="let element"> {{element.mes}} </td>
+                </ng-container>
+
+                <!-- Periodo Column -->
+                <ng-container matColumnDef="periodo">
+                    <th mat-header-cell *matHeaderCellDef> Periodo </th>
+                    <td mat-cell *matCellDef="let element"> {{element.periodo}} </td>
+                </ng-container>
+
+                <!-- Fecha Inicial Column -->
+                <ng-container matColumnDef="fecha_inicial">
+                    <th mat-header-cell *matHeaderCellDef> Fecha inicial </th>
+                    <td mat-cell *matCellDef="let element"> {{element.fecha_inicial}} </td>
+                </ng-container>
+
+                <!-- Fecha Final Column -->
+                <ng-container matColumnDef="fecha_final">
+                    <th mat-header-cell *matHeaderCellDef> Fecha final </th>
+                    <td mat-cell *matCellDef="let element"> {{element.fecha_final}} </td>
+                </ng-container>
+
+                <!-- Dias Column -->
+                <ng-container matColumnDef="dias">
+                    <th mat-header-cell *matHeaderCellDef> Días </th>
+                    <td mat-cell *matCellDef="let element"> {{element.dias}} </td>
+                </ng-container>
+
+                <!-- Horas Column -->
+                <ng-container matColumnDef="horas">
+                    <th mat-header-cell *matHeaderCellDef> Horas </th>
+                    <td mat-cell *matCellDef="let element"> {{element.horas}} </td>
+                </ng-container>
+
+                <!-- Acciones Column -->
+                <ng-container matColumnDef="accion">
+                    <th mat-header-cell *matHeaderCellDef class="header"> Acciones </th>
+                    <td mat-cell *matCellDef="let element" class="action-cell cell"> 
+                        <div class="actions-container">
+                            <button (click)="deletePeriodo(element)">
+                                <img src="assets/icons/delete.svg" alt="Eliminar" title="Eliminar">
+                            </button>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)" [class.demo-row-is-clicked]="selectedRow === row"></tr>
+
+                <!-- Row shown when there is no matching data. -->
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="8">No data matching the filter "{{periodoInput.value}}"</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Liquidacion-->
+        <div *ngIf="option === 'liquidar'" class="tabla">
+            <h1 class="roboto-bold">Liquidación</h1>
+
+            <div class="liquidar-options">
+                <div class="liquidar-option">
+                    <h3 class="roboto-bold">Datos de nomina a liquidar</h3>
+                    <p class="roboto-bold">Tipo de nomina</p>
+                    <input class="roboto-regular" type="select" id="tipo_nomina">
+                </div>
+                <div class="liquidar-option">
+                    <h3 class="roboto-bold">Fechas de liquidación</h3>
+                    <div class="liquidar-fechas">
+                        <div class="fecha">
+                            <p class="roboto-bold">Fecha inicial</p>
+                            <input class="roboto-regular" type="date" id="fecha_inicial" (change)="updateFechaInicial($event)">
+                        </div>
+                        <div class="fecha">
+                            <p class="roboto-bold">Fecha final</p>
+                            <input class="roboto-regular" type="date" id="fecha_final" (change)="updateFechaFinal($event)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons-liquidar">
+                <button class="roboto-medium" (click)="mostrarDatos()" [class.disabled]="!isDateValid()">Mostrar datos</button>
+                <button class="roboto-medium" (click)="liquidarNomina()" [class.disabled]="dataVisible === false">Liquidar nomina ahora</button>
+                <a class="roboto-medium" href="#" (click)="verNominaLiquidada($event)" [class.disabled]="!isFormValid() || (nominaLiquidada === false) " id="ver-nomina-liquidada">Ver nomina liquidada</a>
+            </div>
+
+            <mat-form-field>
+                <mat-label>Buscar trabajador</mat-label>
+                <input matInput (keyup)="applyFilter($event, 'trabajadores')" placeholder="Cedula o nombre" #trabajadorInput>
+            </mat-form-field>
+
+            <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+
+                <!-- Nombre Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <!-- Empleado Column -->
+                <ng-container matColumnDef="empleado">
+                    <th mat-header-cell *matHeaderCellDef> Empleado </th>
+                    <td mat-cell *matCellDef="let element"> {{element.empleado}} </td>
+                </ng-container>
+
+                <!-- Cedula Column -->
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> Cedula </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <!-- Centro de Costo Column -->
+                <ng-container matColumnDef="centro_costo">
+                    <th mat-header-cell *matHeaderCellDef> Centro de Costo </th>
+                    <td mat-cell *matCellDef="let element"> {{element.centro_costo}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns2;" (click)="selectRow(row)" [class.demo-row-is-clicked]="selectedRow === row"></tr>
+
+                <!-- Row shown when there is no matching data. -->
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data matching the filter "{{trabajadorInput.value}}"</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Informes-->
+        <div *ngIf="option === 'informes'"class="tabla">
+            <h1 class="roboto-bold">Seleccione el periodo</h1>
+
+            <div class="liquidar-options">
+                <div class="liquidar-option">
+                    <h3 class="roboto-bold">Datos de nomina a liquidar</h3>
+                    <p class="roboto-bold">Tipo de nomina</p>
+                    <input class="roboto-regular" type="select" id="tipo_nomina">
+                </div>
+                <div class="liquidar-option">
+                    <h3 class="roboto-bold">Fechas de liquidación</h3>
+                    <div class="liquidar-fechas">
+                        <div class="fecha">
+                            <p class="roboto-bold">Fecha inicial</p>
+                            <input class="roboto-regular" type="date" id="fecha_inicial" (change)="updateFechaInicial($event)">
+                        </div>
+                        <div class="fecha">
+                            <p class="roboto-bold">Fecha final</p>
+                            <input class="roboto-regular" type="date" id="fecha_final" (change)="updateFechaFinal($event)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons-liquidar">
+                <button class="roboto-medium" (click)="generarInforme()" [class.disabled]="!isDateValid()">Generar informe</button>
+                <a class="roboto-medium" href="#" id="exportar-informe" [class.disabled]="formGenerated === false">Exportar informe</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<app-header></app-header>
+<app-barra-herramientas></app-barra-herramientas>
+<div class="main-container">
+    <h1 class="roboto-bold">Crear Periodo</h1>
+    <form action="">
+        <h2 class="roboto-bold">Periodos de liquidación</h2>
+        <div class="container">
+            <div class="form-group">
+                <h4 class="roboto-bold">Año</h4>
+                <input class="roboto-regular" id="year" type="number" required>
+            </div>
+            <div class="form-group">
+                <h4 class="roboto-bold">Mes</h4>
+                <input class="roboto-regular" id="month" type="number" required>
+            </div>
+            <div class="form-group">
+                <h4 class="roboto-bold">Periodo</h4>
+                <input class="roboto-regular" id="periodo" type="number" required>
+            </div>
+        </div>
+        <h2 class="roboto-bold">Fechas de liquidación</h2>
+        <div class="container">
+            <div class="form-group">
+                <h4 class="roboto-bold">Fecha de apertura</h4>
+                <input class="roboto-regular" id="openDate" type="date" required>
+            </div>
+            <div class="form-group">
+                <h4 class="roboto-bold">Fecha de cierre</h4>
+                <input class="roboto-regular" id="closeDate" type="date" required>
+            </div>
+            <div class="form-group">
+                <h4 class="roboto-bold">Fecha de pago</h4>
+                <input class="roboto-regular" id="payDate" type="date" required>
+            </div>
+            
+        </div>
+        <div class="buttons">
+            <button type="submit" class="roboto-medium"> <img src="assets/icons/check-green.svg" alt="Check"> Crear periodo</button>
+            <a class="roboto-medium" href="nomina"> <img src="assets/icons/add.svg" alt="Cancel"> Cancelar</a>
+        </div>
+    </form>
+</div>
