@@ -46,4 +46,9 @@ export const routes: Routes = [
   loadComponent: () => import('./components/usuario-cuenta/usuario-cuenta.component')
  },
 
+ {
+  path: 'procesos-activos',
+  loadComponent: () => import('./components/procesos-activos/procesos-activos.component')
+ },
+
 ];
