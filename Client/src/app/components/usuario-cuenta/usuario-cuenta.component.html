@@ -6,43 +6,43 @@
     <mat-grid-tile>
         <div class="item">
             <label class="roboto-bold" for="nombre">Nombre</label>
-            <input class="input-readonly roboto-bold" type="text" value="Juan Jose" id="nombre" readonly>
+            <input class="input-readonly roboto-bold" type="text" [value]="userInfo?.name" id="nombre" readonly>
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
         <div class="item">
             <label class="roboto-bold" for="apellido">Apellido</label>
-            <input class="input-readonly roboto-bold" type="text" value="Espinosa" id="apellido" readonly>
+            <input class="input-readonly roboto-bold" type="text" [value]="userInfo?.lastName" id="apellido" readonly>
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
         <div class="item">
             <label class="roboto-bold" for="usuario">Usuario</label>
-            <input class="input-readonly roboto-bold" type="text" value="JuanJ241" id="usuario" readonly>
+            <input class="input-readonly roboto-bold" type="text" [value]="userInfo?.username" id="usuario" readonly>
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
         <div class="item">
             <label class="roboto-bold" for="fecha">Fecha de nacimiento</label>
-            <input class="input-readonly roboto-bold" type="text" value="24/01/2004" id="fecha" readonly>
+            <input class="input-readonly roboto-bold" type="text" [value]="userInfo?.birthDate" id="fecha" readonly>
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
         <div class="item">
             <label class="roboto-bold" for="telefono">Telefono</label>
-            <input class="input-readonly roboto-bold" type="text" value="0123456789" id="telefono" readonly>
+            <input class="input-readonly roboto-bold" type="text" [value]="userInfo?.phone" id="telefono" readonly>
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
         <div class="item">
             <label class="roboto-bold" for="direccion">Dirección</label>
-            <input class="input-readonly roboto-bold" type="text" value="calle 3 #7-28" id="direccion" readonly>
+            <input class="input-readonly roboto-bold" type="text" [value]="userInfo?.address" id="direccion" readonly>
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
         <div class="item">
             <label class="roboto-bold" for="correo">Correo electronico</label>
-            <input class="input-readonly roboto-bold" type="text" value="juan.espinosa1@utp.edu.co" id="correo" readonly>
+            <input class="input-readonly roboto-bold" type="text" [value]="userInfo?.email" id="correo" readonly>
         </div>
     </mat-grid-tile>
 </mat-grid-list>

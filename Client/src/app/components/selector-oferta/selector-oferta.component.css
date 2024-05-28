@@ -42,10 +42,10 @@ margin: 10px 0;
 }
 
 button.selected {
-background-color: #33BAFF;
-color: white; /* Opcional, para mejor contraste */
+background-color: #CCEEFF;
+/*color: white;  Opcional, para mejor contraste */
 }
 
-button.selected .offer-img img {
+/* button.selected .offer-img img {
     filter: brightness(20);
-}
+} */
