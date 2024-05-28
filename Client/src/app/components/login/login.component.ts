@@ -32,6 +32,9 @@ export class LoginComponent{
           if(this.loginService.getUserRole() == "ADMIN"){
             //vista administrador
             window.location.href = '/home-analista'
+          }else if (this.loginService.getUserRole() == "CANDIDATE"){
+            //vista usuario
+            window.location.href = '/usuario-cuenta'
           }else{
             this.loginService.logout(); // cerrar sesion
           }

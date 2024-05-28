@@ -59,7 +59,7 @@ export default class RegisterComponent {
         this.snack.open('Usuario registrado con éxito','Aceptar',{
           duration:3000
         });
-        this.router.navigate(['/usuario-cuenta']);
+        this.router.navigate(['/login']);
       },
       error => {
         console.error('Error al registrar el usuario',error);
