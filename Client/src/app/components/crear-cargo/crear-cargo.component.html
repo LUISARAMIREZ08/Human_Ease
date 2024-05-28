@@ -1,0 +1,64 @@
+<app-header></app-header>
+<app-barra-herramientas></app-barra-herramientas>
+
+<div class="main-container">
+    <h1 class="roboto-bold">Crear Cargo</h1>
+    <form class="roboto-light" action="">
+      <div class="form-group">
+        <label for="cargo">Cargo</label>
+        <input type="text" placeholder="Nombre del cargo" class="input" id="cargo" name="cargo" ngModel>
+      </div>
+  
+      <div class="form-group">
+        <label for="departamento">Departamento</label>
+        <select name="departamento" id="departamento" class="input" ngModel>
+          <option value="">Seleccionar departamento</option>
+          <option *ngFor="let dept of departamentos" [value]="dept">{{dept}}</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="nivel-experiencia">Nivel de experiencia</label>
+        <select name="nivelExperiencia" id="nivel-experiencia" class="input" ngModel>
+          <option value="">Seleccionar nivel de experiencia</option>
+          <option *ngFor="let nivel of experiencia" [value]="nivel">{{nivel}}</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="tiempo-empleo">Tiempo de empleo</label>
+        <select name="tiempoEmpleo" id="tiempo-empleo" class="input" ngModel>
+          <option value="">Seleccionar tiempo de empleo</option>
+          <option *ngFor="let tiempo of tiempo" [value]="tiempo">{{tiempo}}</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="requerimiento">Requerimientos</label>
+        <select id="requerimiento" class="input" (change)="agregarRequerimiento($event)">
+          <option value="">Seleccionar requerimiento a agregar</option>
+          <option *ngFor="let req of requerimientos" [value]="req">{{req}}</option>
+        </select>
+      </div>
+      
+      <div class="form-group-item">
+        <input type="text" placeholder="Agregar requerimiento personalizado" id="requerimiento-personalizado">
+        <button type="button" id="add-requerimiento" (click)="agregarRequerimientoPersonalizado()">+</button>
+      </div>
+  
+      <div class="form-group">
+        <h3 class="roboto-bold">Requerimientos agregados</h3>
+        <ul>
+          <li *ngFor="let req of requerimientosAgregados; let i = index">
+            <img src="assets/icons/delete.svg" alt="delete" (click)="eliminarRequerimiento(i)">
+            {{ req }}
+          </li>
+        </ul>
+      </div>
+  
+      <div class="button">
+        <button type="submit" class="submit-button">Crear postulación</button>
+      </div>
+    </form>
+</div>
+  

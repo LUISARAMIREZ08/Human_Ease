@@ -51,4 +51,9 @@ export const routes: Routes = [
   loadComponent: () => import('./components/procesos-activos/procesos-activos.component')
  },
 
+ {
+  path: 'crear-cargo',
+  loadComponent: () => import('./components/crear-cargo/crear-cargo.component')
+ },
+
 ];
