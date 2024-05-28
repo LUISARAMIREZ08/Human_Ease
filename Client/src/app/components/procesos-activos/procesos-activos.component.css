@@ -1,0 +1,9 @@
+.estado-link{
+    text-decoration: none;
+    color: #007bff;
+    transition: background-color 0.3s ease;
+}
+
+.estado-link:hover{
+    color: #0056b3;
+}

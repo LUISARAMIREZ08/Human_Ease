@@ -1,0 +1,51 @@
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 15%;
+    flex-direction:row;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    background: none;
+    cursor: pointer;
+    margin-bottom: 0px;
+    
+    }
+
+.offer-img img{
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+}
+
+.offer-container{
+    text-align: left;
+    width: 100%;
+
+}
+
+.offer-container h2{
+    font-size: 25px;
+    margin: 0px;
+    margin-bottom: 5px;
+}
+
+.offer-container p{
+    font-size: 15px;
+    margin: 0px;
+    margin-bottom: 5px;
+}
+    
+button div {
+margin: 10px 0;
+}
+
+button.selected {
+background-color: #33BAFF;
+color: white; /* Opcional, para mejor contraste */
+}
+
+button.selected .offer-img img {
+    filter: brightness(20);
+}

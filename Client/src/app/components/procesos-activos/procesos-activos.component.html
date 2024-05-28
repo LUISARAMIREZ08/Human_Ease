@@ -1,0 +1,46 @@
+<app-header-usuario-logueado></app-header-usuario-logueado>
+<div class="main-container">
+    <h1 class="roboto-bold">Postulaciones</h1>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="fecha_postulacion">
+            <th mat-header-cell *matHeaderCellDef> Fecha de postulación</th>
+            <td mat-cell *matCellDef="let element"> {{element.fecha_postulacion}} </td>
+        </ng-container>
+        
+        <!-- Name Column -->
+        <ng-container matColumnDef="titulo_postulacion">
+            <th mat-header-cell *matHeaderCellDef> Titulo de postulación </th>
+            <td mat-cell *matCellDef="let element"> {{element.titulo_postulacion}} </td>
+        </ng-container>
+        
+        <!-- Weight Column -->
+        <ng-container matColumnDef="cargo">
+            <th mat-header-cell *matHeaderCellDef> Cargo </th>
+            <td mat-cell *matCellDef="let element"> {{element.cargo}} </td>
+        </ng-container>
+        
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef> Estado </th>
+            <td mat-cell *matCellDef="let element">
+                <span *ngIf="element.estado === 'Cerrado'; else openState">
+                    {{ element.estado }}
+                  </span>
+                  <ng-template #openState>
+                    <a class="roboto-bold estado-link" [href]="element.link">{{ element.estado }}</a>
+                  </ng-template>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fecha">
+            <th mat-header-cell *matHeaderCellDef> Fecha </th>
+            <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+</div>

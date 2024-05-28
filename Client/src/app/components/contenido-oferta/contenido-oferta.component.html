@@ -1,0 +1,51 @@
+<div *ngIf="selectedOffer === offerId" class="oferta-contenido">
+    <div class="title-container">
+      <img [src]="imgSrc" alt="Imagen de la oferta" class="oferta-imagen">
+      <h1 class="roboto-bold oferta-titulo">{{ title }}</h1>
+    </div>
+    <mat-grid-list cols="2" rowHeight="4rem">
+      <mat-grid-tile>
+        <div class="informacion">
+          <h4 class="roboto-regular">Nivel de experiencia</h4>
+          <p class="roboto-bold">{{ nivelExperiencia }}</p>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="informacion">
+          <h4 class="roboto-regular">Tiempo de empleo</h4>
+          <p class="roboto-bold">{{ tiempoEmpleo }}</p>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="informacion">
+          <h4 class="roboto-regular">Cargo</h4>
+          <p class="roboto-bold">{{ cargo }}</p>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="informacion">
+          <h4 class="roboto-regular">Departamento</h4>
+          <p class="roboto-bold">{{ departamento }}</p>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="informacion">
+          <h4 class="roboto-regular">Fecha de creación</h4>
+          <p class="roboto-bold">{{ fechaCreacion }}</p>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="informacion">
+          <h4 class="roboto-regular">Fecha de cierre</h4>
+          <p class="roboto-bold">{{ fechaCierre }}</p>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <div class="button">
+      <button type="submit" class="submit-button">Aplicar a postulación</button>
+    </div>
+    <div class="description">
+      <h4 class="roboto-bold">Descripción</h4>
+      <p class="roboto-regular">{{ descripcion }}</p>
+    </div>
+</div>  
