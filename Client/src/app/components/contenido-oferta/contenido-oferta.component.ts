@@ -11,7 +11,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 })
 export default class ContenidoOfertaComponent {
   @Input() imgSrc: string = '';
-  @Input() title: string = 'Titulo de oferta';
+  @Input() titulo: string = 'Titulo de oferta';
   @Input() cargo: string = 'Cargo';
   @Input() departamento: string = 'Departamento';
   @Input() nivelExperiencia: string = 'Nivel de experiencia';
