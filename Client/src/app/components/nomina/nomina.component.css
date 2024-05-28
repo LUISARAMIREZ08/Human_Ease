@@ -1,0 +1,187 @@
+.main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tabla-container{
+    width: 70%;
+}
+
+.create-button {
+    margin-bottom: 2%;
+}
+
+.create-button a {
+    text-decoration: none;
+    color: white;
+}
+
+.create-button button {
+    background-color: #004466;
+    color: white;
+    border: none;
+    padding: 20px 30px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.create-button button:hover {
+    background-color: #00334d;
+}
+
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.actions-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.action-cell button {
+    background-color: transparent; /* Fondo transparente para que solo se muestre la imagen */
+    border: none; /* Sin borde */
+    border-radius: 10%;
+    width: 40px; /* Tamaño fijo */
+    height: 40px; /* Tamaño fijo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: none;
+    padding: none;
+  }
+  
+.action-cell button img {
+width: 20px; /* Tamaño fijo para la imagen */
+height: 20px; /* Tamaño fijo para la imagen */
+}
+
+.action-cell button:hover {
+background-color: #004466; /* Cambia el color de fondo al hacer hover */
+}
+
+.action-cell button:hover img {
+filter: invert(100%) brightness(2); /* Invierte los colores de la imagen al hacer hover */
+}
+
+.options{
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0px;
+    border-top: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+    border-left: 2px solid #ccc;
+    border-radius: 3px;
+}
+
+.option{
+    height: 100px;
+    width: 100px;
+    background: none;
+    border: none;
+    border-right: 2px solid #ccc;
+    transition: background-color 0.3s ease;
+}
+
+.option:hover{
+    background-color: #004466;
+    color: white;
+}
+
+.option:hover img{
+    filter: invert(100%) brightness(2);
+}
+
+.active img{
+    filter: invert(100%) brightness(2);
+}
+
+.active {
+    background-color: #004466;
+    color: white;
+
+}
+
+.option p{
+    font-size: 20px;
+    margin: 0px;
+}
+
+.title-2{
+    margin-bottom: 0px;
+}
+
+.liquidar-options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.liquidar-option{
+    margin-right: 20px;
+}
+
+.liquidar-option h3{
+    color: #004466;
+    margin: 0px;
+    padding: 0px;
+}
+
+.liquidar-option input{
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.liquidar-fechas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fecha{
+    margin-right: 5px;
+}
+
+.buttons-liquidar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0px;
+}
+
+.buttons-liquidar button, a{
+    text-decoration: none;
+    background-color: #004466;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.buttons-liquidar button:hover, a:hover{
+    background-color: #00334d;
+}
+
+.demo-row-is-clicked {
+    font-weight: bold;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}

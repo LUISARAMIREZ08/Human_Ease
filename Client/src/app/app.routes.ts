@@ -71,5 +71,20 @@ export const routes: Routes = [
   path: 'aporte-seguridad-social',
   loadComponent: () => import('./components/aporte-seguridad-social/aporte-seguridad-social.component')
  },
+
+ {
+  path: 'nomina',
+  loadComponent: () => import('./components/nomina/nomina.component')
+ },
+
+ {
+  path: 'liquidacion-empleado',
+  loadComponent: () => import('./components/liquidacion-empleado/liquidacion-empleado.component')
+ },
+
+ {
+  path: 'crear-periodo',
+  loadComponent: () => import('./components/crear-periodo/crear-periodo.component')
+ },
  
 ];

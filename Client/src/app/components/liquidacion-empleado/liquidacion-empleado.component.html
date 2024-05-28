@@ -1,0 +1,106 @@
+<app-header></app-header>
+<app-barra-herramientas></app-barra-herramientas>
+<div class="main-container">
+    <h1 class="roboto-bold">Liquidación de empleado</h1>
+    <div class="info">
+        <img src="assets/icons/user-2.svg" alt="User_icon">
+        <div class="employee-info">
+            <div class="item">
+                <p class="roboto-bold">Colaborador: </p>
+                <p class="roboto-regular" type="text" id="name">Juan</p>
+            </div>
+            <div class="item">
+                <p class="roboto-bold">Cedula: </p>
+                <p class="roboto-regular" type="text" id="cedula">123123</p>
+            </div>
+            <div class="item">
+                <p class="roboto-bold">Teléfono: </p>
+                <p class="roboto-regular" type="text" id="number">123123123</p>
+            </div>
+            <div class="item">
+                <div class="item">
+                    <p class="roboto-bold">Periodo: </p>
+                    <p class="roboto-regular" type="text" id="periodo">1</p>
+                </div>
+                <div class="item">
+                    <p class="roboto-bold">Año: </p>
+                    <p class="roboto-regular" type="text" id="ano">2024</p>
+                </div>
+                <div class="item">
+                    <p class="roboto-bold">Mes:</p>
+                    <p class="roboto-regular" type="text" id="mes">8</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!-- Con Column -->
+        <ng-container matColumnDef="con">
+          <th mat-header-cell *matHeaderCellDef> Con </th>
+          <td mat-cell *matCellDef="let element"> {{element.con}} </td>
+        </ng-container>
+    
+        <!-- Descripción Column -->
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef> Descripción </th>
+          <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+        </ng-container>
+    
+        <!-- Cedula Column -->
+        <ng-container matColumnDef="cedula">
+          <th mat-header-cell *matHeaderCellDef> Cedula </th>
+          <td mat-cell *matCellDef="let element"> {{element.cedula}} </td>
+        </ng-container>
+    
+        <!-- Cantidad Column -->
+        <ng-container matColumnDef="cantidad">
+          <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+          <td mat-cell *matCellDef="let element"> {{element.cantidad}} </td>
+        </ng-container>
+    
+        <!-- Devengados Column -->
+        <ng-container matColumnDef="devengados">
+          <th mat-header-cell *matHeaderCellDef> Devengados </th>
+          <td mat-cell *matCellDef="let element"> {{element.devengados}} </td>
+        </ng-container>
+    
+        <!-- Deducidos Column -->
+        <ng-container matColumnDef="deducidos">
+          <th mat-header-cell *matHeaderCellDef> Deducidos </th>
+          <td mat-cell *matCellDef="let element"> {{element.deducidos}} </td>
+        </ng-container>
+    
+        <!-- Fecha de Liquidación Column -->
+        <ng-container matColumnDef="fecha_liquidacion">
+          <th mat-header-cell *matHeaderCellDef> Fecha de Liquidación </th>
+          <td mat-cell *matCellDef="let element"> {{element.fecha_liquidacion}} </td>
+        </ng-container>
+    
+        <!-- Fecha de Pago Column -->
+        <ng-container matColumnDef="fecha_pago">
+          <th mat-header-cell *matHeaderCellDef> Fecha de Pago </th>
+          <td mat-cell *matCellDef="let element"> {{element.fecha_pago}} </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+      </table>
+
+      <div class="container">
+        <div class="item">
+            <p class="roboto-bold">Total devengados:</p>
+            <p class="roboto-regular" type="text" id="total-devengados"> 1306454</p>
+        </div>
+        <div class="item">
+            <p class="roboto-bold">Total deducidos:</p>
+            <p class="roboto-regular" type="text" id="total-deducidos"> 1000000</p>
+        </div>
+        <div class="item">
+            <p class="roboto-bold">Total a pagar:</p>
+            <p class="roboto-regular" type="text" id="total-pagar">1206454</p>
+        </div>
+      </div>
+      <a class="submit-button roboto-bold" href="">Volver</a>
+</div>
