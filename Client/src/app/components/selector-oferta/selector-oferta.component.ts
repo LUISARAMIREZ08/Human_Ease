@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 })
 export default class SelectorOfertaComponent {
   @Input() imgSrc: string = '';
-  @Input() title: string = 'Titulo de oferta';
+  @Input() titulo: string = 'Titulo de oferta';
   @Input() cargo: string = 'Cargo de oferta';
   @Input() departamento: string = 'Departamento de oferta';
   @Input() offerId: string = '';

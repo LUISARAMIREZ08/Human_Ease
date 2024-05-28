@@ -1,0 +1,121 @@
+.main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 50px;
+}
+
+.form-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form-group h3{
+    margin-right: 20px;
+}
+
+.form-group input{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.progress {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 200px; /* Ajusta esto según sea necesario */
+  }
+
+.item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.number{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 2px solid black;
+    font-size: 20px;
+    background-color: white;
+    margin-bottom: 0px;
+}
+
+.active{
+    background-color: #004466;
+    color: white;
+}
+
+.line-container {
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    width: 100%; /* Ajusta esto según sea necesario */
+    display: flex;
+    justify-content: center;
+  }
+  
+.line {
+    width: 70%;
+    height: 2px; /* Ajusta el grosor de la línea según sea necesario */
+    background-color: black; /* Ajusta el color de la línea según sea necesario */
+}
+
+.submit-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+.button {
+    grid-column: 2/3;
+    justify-self: center;
+}
+
+.button a{
+    text-decoration: none;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container h3{
+    margin: 0px;
+    margin-bottom: 10px;
+}

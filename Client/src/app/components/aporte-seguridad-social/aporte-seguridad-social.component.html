@@ -1,0 +1,41 @@
+<app-header></app-header>
+<app-barra-herramientas></app-barra-herramientas>
+<div class="main-container">
+    <h1 class="roboto-bold"> Liquidación de aportes a seguridad social</h1>
+    <form action="">
+        <div class="form-group">
+            <h3 class="roboto-regular">Periodo</h3>
+            <input class="roboto-regular" id="periodo" type="month" required [readonly]="step > 1">
+        </div>
+        <div class="progress">
+            <div class="item">
+                <p [ngClass]="{'active': step === 1 || step === 4}" class="number roboto-regular">1</p>
+                <p class="title roboto-regular">Descargar archivo plano</p>
+            </div>
+            <div class="item">
+                <p [ngClass]="{'active': step === 2 || step === 4}" class="number roboto-regular">2</p>
+                <p class="title roboto-regular">Subir plantilla</p>
+            </div>
+            <div class="item">
+                <p [ngClass]="{'active': step === 3 || step === 4}" class="number roboto-regular">3</p>
+                <p class="title roboto-regular">Notificar al contador</p>
+            </div>
+            <div class="line-container">
+                <p class="line roboto-regular"></p>
+            </div>
+        </div>
+        
+        <div class="button">
+            <button *ngIf="1 === step" type="submit" class="submit-button roboto-medium" (click)="nextStep()">Descargar archivo</button>
+            
+            <a *ngIf="2 === step" href="https://www.aportesenlinea.com" class="submit-button roboto-medium" target="_blank" (click)="nextStep()">Subir plantilla</a>
+            
+            <button *ngIf="3 === step" class="submit-button roboto-medium" (click)="nextStep()">Notificar</button>
+            
+            <div *ngIf="4 === step" class="container">
+                <h3  class="roboto-regular">Proceso completado</h3>
+                <a href="" class="submit-button roboto-medium" (click)="reloadPage($event)">Realizar otra liquidación</a>
+            </div>
+        </div>
+    </form>
+</div>

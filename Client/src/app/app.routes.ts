@@ -67,4 +67,9 @@ export const routes: Routes = [
   loadComponent: () => import('./components/crear-cargo/crear-cargo.component')
  },
 
+ {
+  path: 'aporte-seguridad-social',
+  loadComponent: () => import('./components/aporte-seguridad-social/aporte-seguridad-social.component')
+ },
+ 
 ];
