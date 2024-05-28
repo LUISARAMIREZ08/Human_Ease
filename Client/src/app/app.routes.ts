@@ -24,6 +24,11 @@ export const routes: Routes = [
  {
   path: 'ofertas-laborales',
   loadComponent: () => import('./components/ofertas-laborales/ofertas-laborales.component')
- }
+ },
+
+ {
+  path: 'usuario-cuenta',
+  loadComponent: () => import('./components/usuario-cuenta/usuario-cuenta.component')
+ },
 
 ];
