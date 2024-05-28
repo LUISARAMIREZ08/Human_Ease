@@ -12,6 +12,11 @@ export const routes: Routes = [
  },
 
  {
+  path: 'postulaciones',
+  loadComponent: () => import('./components/postulaciones/postulaciones.component')
+ },
+
+ {
   path: 'crear-postulacion',
   loadComponent: () => import('./components/crear-postulacion/crear-postulacion.component')
  },
@@ -21,6 +26,16 @@ export const routes: Routes = [
   loadComponent: () => import('./components/trabajadores/trabajadores.component')
  },
 
+ {
+  path: 'novedades',
+  loadComponent: () => import('./components/novedades/novedades.component')
+ },
+
+ {
+  path: 'postulantes',
+  loadComponent: () => import('./components/postulantes/postulantes.component')
+ },
+ 
  {
   path: 'ofertas-laborales',
   loadComponent: () => import('./components/ofertas-laborales/ofertas-laborales.component')
