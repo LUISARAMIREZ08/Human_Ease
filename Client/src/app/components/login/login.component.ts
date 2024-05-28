@@ -16,7 +16,11 @@ export class LoginComponent{
   username: string = '';
   password: string= '';
  
-  constructor(private loginService: LoginService, private router: Router, private snack:MatSnackBar ) { }
+  constructor(
+    private loginService: LoginService, 
+    private router: Router, 
+    private snack:MatSnackBar 
+  ) { }
     
   onSubmit() {
     

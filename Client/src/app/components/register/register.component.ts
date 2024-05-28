@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Router} from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {UserService} from '../../services/user.service';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,8 @@ export default class RegisterComponent {
     private router: Router,
     private formBuilder: FormBuilder, 
     private snack: MatSnackBar,
-    private userService: UserService
+    private userService: UserService,
+    private loginService: LoginService
     ) { }
 
   ngOnInit() {
@@ -54,12 +56,13 @@ export default class RegisterComponent {
     }
     this.userService.registerUser(formData).subscribe(
       
-      response => {
+      (response:any) => {
         console.log('Usuario registrado con éxito',response);
         this.snack.open('Usuario registrado con éxito','Aceptar',{
           duration:3000
         });
-        this.router.navigate(['/login']);
+        this.loginService.loginUser(response.token);
+        this.router.navigate(['/usuario-cuenta']);
       },
       error => {
         console.error('Error al registrar el usuario',error);

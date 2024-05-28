@@ -8,6 +8,15 @@
         <li><a href="">Postulaciones</a></li>
         <li><a href="home-analista">RR.HH</a></li>
         </ul>
-        <a href=""><img src="assets/icons/user.svg" alt="userLogo"></a>
+        <button class="menu_button_user" [matMenuTriggerFor]="menu"><img src="assets/icons/user.svg" alt="userLogo"></button>
+        <mat-menu class="menu_user" #menu="matMenu">
+            <!--<a href="usuario-cuenta" mat-menu-item>Cuenta</a> -->
+            <button mat-menu-item class="menu_user_item" >
+                <div class="logout" (click)="logout()">
+                    Cerrar sesión
+                    <img src="assets/icons/logout.svg" alt="Logout">
+                </div>
+            </button>
+        </mat-menu>
     </div>
 </div>
