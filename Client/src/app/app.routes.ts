@@ -45,5 +45,4 @@ export const routes: Routes = [
   path: 'usuario-cuenta',
   loadComponent: () => import('./components/usuario-cuenta/usuario-cuenta.component')
  },
-
 ];

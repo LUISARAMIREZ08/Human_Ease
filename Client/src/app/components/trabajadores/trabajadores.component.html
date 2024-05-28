@@ -2,9 +2,10 @@
 <app-barra-herramientas></app-barra-herramientas>
 
 <div class="main-container">
-        <h1 class="roboto-bold">Trabajadores</h1>
-        
+    <h1 class="roboto-bold">Trabajadores</h1>  
     <p class="text-blue roboto-bold">Selecciona a un empleado para agregar una novedad.</p>
+    <a href="novedades" class="text-blue roboto-bold">Agregar una novedad para todos.</a><br><br>
+
     <mat-form-field>
         <mat-label>Buscar trabajador</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Cedula o nombre" #input>
