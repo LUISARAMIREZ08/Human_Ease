@@ -62,7 +62,11 @@ export default class RegisterComponent {
           duration:3000
         });
         this.loginService.loginUser(response.token);
-        this.router.navigate(['/usuario-cuenta']);
+        // Guardar el usuario actual en el local storage
+        this.loginService.getCurrenUser().subscribe((user:any) =>{
+          this.loginService.setUser(user);
+          this.router.navigate(['/usuario-cuenta']);
+        });
       },
       error => {
         console.error('Error al registrar el usuario',error);
