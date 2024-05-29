@@ -1,4 +1,4 @@
-package com.example.server.controller.request;
+package com.example.server.controller.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

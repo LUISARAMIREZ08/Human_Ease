@@ -30,7 +30,7 @@ public class JobOffer {
     @Column(name="job_offer_expiration_date", nullable = false)
     private LocalDate jobOfferExpirationDate;
 
-    @Column(name="job_offer_salary", nullable = false)
+    @Column(name="job_offer_Status", nullable = false)
     @Enumerated(EnumType.STRING)
     private JobOfferStatus jobOfferStatus;
 

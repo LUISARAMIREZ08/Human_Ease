@@ -1,5 +1,6 @@
 package com.example.server.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,6 +21,7 @@ public class Requirements {
 
     @ManyToOne(targetEntity = Position.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "position_id", nullable = false)
+    @JsonManagedReference
     private Position position;
 
 }
