@@ -25,10 +25,9 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private StatusEmployee statusEmployee;
 
-
     @OneToOne(targetEntity = UserEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "card_id", nullable = false)
-    private UserEntity person;
+    private UserEntity userEntity;
 
     @ManyToOne(targetEntity = CostCenter.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "cost_center_id", nullable = false)

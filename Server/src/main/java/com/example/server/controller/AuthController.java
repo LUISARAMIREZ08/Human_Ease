@@ -1,6 +1,6 @@
 package com.example.server.controller;
 
-import com.example.server.controller.request.AuthResponseDTO;
+import com.example.server.controller.response.AuthResponseDTO;
 import com.example.server.controller.request.LoginRequestDTO;
 import com.example.server.controller.request.RegisterRequestDTO;
 import com.example.server.controller.request.UserUpdateRequestDTO;

@@ -1,6 +1,8 @@
 package com.example.server.entity;
 
 import com.example.server.entity.enums.ContractType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,7 +31,7 @@ public class Contratcs {
     @Enumerated(EnumType.STRING)
     private ContractType contractType;
 
-    @ManyToOne(targetEntity = Employee.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Employee.class,fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 }
