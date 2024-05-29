@@ -58,8 +58,8 @@ export class LoginComponent{
     this.router.navigate(['/register']);
   }
 
-  //navigate to create-postulation
-  createPostulation(){
-    this.router.navigate(['/crear-postulacion']);
+  //navigate to ofertas-laborales
+  viewPostulations(){
+    this.router.navigate(['/ofertas-laborales']);
   }
 }
