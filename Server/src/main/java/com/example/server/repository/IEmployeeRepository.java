@@ -11,6 +11,7 @@ import java.util.List;
 
 @Repository
 public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
+    //Trabajadores
     @Query("SELECT new com.example.server.controller.response.employee.EmployeeJoin(" +
             "u.cardId, u.name, u.lastName, p.namePosition, e.salaryBase,u.phone) " +
             "FROM Employee e " +
@@ -18,6 +19,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
             "JOIN e.position p")
     List<EmployeeJoin> getEmployeeAndUserAndPosition();
 
+    //Nomina
     @Query("SELECT new com.example.server.controller.response.employee.EmployeeJoinCostCenter("+
             "u.name, u.lastName, e.employeeId, u.cardId, c.costCenterId) "+
             "FROM Employee e "+

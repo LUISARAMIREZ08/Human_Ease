@@ -43,12 +43,14 @@ public class EmployeeController {
         return this.employeeServices.saveEmployee(request);
     }
 
+    //Trabajadores
     @GetMapping(path = "/all")
     public ResponseEntity<List<EmployeeJoin>> getAllEmployeesAndUsersAndPositions() {
         List<EmployeeJoin> employees = employeeServices.getEmployeeAndUserAndPosition();
         return ResponseEntity.ok(employees);
     }
 
+    //Nomina
     @GetMapping(path = "/allCostCenter")
     public ResponseEntity<List<EmployeeJoinCostCenter>> getAllEmployeesAndUsersAndCostCenter() {
         List<EmployeeJoinCostCenter> employees = employeeServices.getEmployeeAndUserAndCostCenter();
