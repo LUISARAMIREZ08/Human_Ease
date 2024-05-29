@@ -16,7 +16,7 @@
         <!-- Id Column -->
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef> Cedula</th>
-            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.cardId}} </td>
         </ng-container>
         
         <!-- Name Column -->
@@ -28,19 +28,19 @@
         <!-- LastName Column -->
         <ng-container matColumnDef="last_name">
             <th mat-header-cell *matHeaderCellDef> Apellido </th>
-            <td mat-cell *matCellDef="let element"> {{element.last_name}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
         </ng-container>
         
         <!--Role Column -->
         <ng-container matColumnDef="role_person">
             <th mat-header-cell *matHeaderCellDef> Cargo </th>
-            <td mat-cell *matCellDef="let element"> {{element.role_person}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.positionName}} </td>
         </ng-container>
 
          <!-- Salary Column -->
          <ng-container matColumnDef="salary_base">
             <th mat-header-cell *matHeaderCellDef> Salario </th>
-            <td mat-cell *matCellDef="let element"> {{element.salary_base}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.salaryBase}} </td>
         </ng-container>
 
          <!-- Phone Column -->
