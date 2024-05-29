@@ -1,0 +1,40 @@
+<app-header-psicologo></app-header-psicologo>
+<app-barra-herramientas-psicologo></app-barra-herramientas-psicologo>
+<div class="main-container">
+    <h1 class="roboto-bold">Pruebas Psicotecnicas</h1>
+    <div class="search">
+      <p class="roboto-medium">Sube los resultados de las pruebas del postulante</p>
+      
+      <mat-form-field appearance="fill" class="search-bar">
+        <mat-label>Buscar postulante</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Buscar por cedula, nombre o titulo de la oferta" #input>
+      </mat-form-field>
+    </div>
+    <ul class="postulantes">
+      <li class="postulante" *ngFor="let postulante of filteredData">
+        <div clasS="postulante-info">
+          <img src="assets/icons/user-2.svg" alt="User Icon">
+          <div class="info">
+            <div>
+              <h3 class="roboto-bold">Cedula: </h3>
+              <p class="roboto-regular">{{postulante.id}}</p>
+            </div>
+            <div>
+              <h3 class="roboto-bold">Nombre: </h3>
+              <p class="roboto-regular">{{postulante.name}}</p>
+            </div>
+            <div>
+              <h3 class="roboto-bold">Titulo Oferta: </h3>
+              <p class="roboto-regular">{{postulante.titulo_oferta}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="options">
+          <a href="anadir-prueba?id={{postulante.id}}" class="roboto-medium"><img src="assets/icons/add.svg" alt="add"><p> Adicionar </p></a>
+          <a href="resultados-pruebas?id={{postulante.id}}" class="roboto-medium"><img src="assets/icons/assignment_add.svg" alt="add"><p> Resultados </p></a>
+          <button class="roboto-medium"><img src="assets/icons/delete.svg" alt="delete"><p> Eliminar </p></button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  

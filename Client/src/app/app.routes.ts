@@ -86,5 +86,25 @@ export const routes: Routes = [
   path: 'crear-periodo',
   loadComponent: () => import('./components/crear-periodo/crear-periodo.component')
  },
+
+ {
+  path: 'home-psicologo',
+  loadComponent: () => import('./components/home-psicologo/home-psicologo.component')
+ },
+
+ {
+  path: 'pruebas-psicotecnicas',
+  loadComponent: () => import('./components/pruebas-psicotecnicas/pruebas-psicotecnicas.component')
+ },
+
+ {
+  path: 'anadir-prueba',
+  loadComponent: () => import('./components/anadir-prueba/anadir-prueba.component')
+ },
+ 
+ {
+  path: 'resultados-pruebas',
+  loadComponent: () => import ('./components/resultados-pruebas/resultados-pruebas.component')
+ },
  
 ];

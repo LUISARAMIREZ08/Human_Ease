@@ -1,0 +1,127 @@
+.search{
+    display: flex;
+    justify-content: space-between; 
+}
+
+.search p{
+    align-self: start;
+    color: #0087CC;
+}
+
+.search-bar{
+    width: 50%;
+}
+
+.postulantes{
+    width: 80%;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.postulante{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.postulante-info{
+    display: flex;
+    align-items: center;
+
+}
+
+.postulante img{
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    background-color: #CCEEFF;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.info div{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.info div p{
+    font-size: 16px;
+    margin: 0px;
+
+}
+
+.info div h3{
+    font-size: 16px;
+    margin: 0px;
+    margin-right: 5px;
+}
+
+.options{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.options a, button{
+    width: 70px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 12px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    color: white;
+}
+
+.options a{
+    background-color: #007bff;
+}
+
+.options a:hover{
+    background-color: #0056b3;
+}
+
+.options a img{
+
+    width: 20px;
+    margin: 0px;
+    background-color: transparent;
+    filter: invert(100%) brightness(20) saturate(0);
+}
+
+.options a p, button p{
+    margin: 0px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.options button{
+    background-color: transparent;
+    color: black;
+    border: 2px solid #ccc;
+}
+
+.options button:hover{
+    background-color: #ccc;
+}
+
+.options button img{
+    width: 20px;
+    height: 20px;
+    margin: 0px;
+    background-color: transparent;
+    filter: brightness(0) saturate(100%) invert(40%) sepia(84%) saturate(5970%) hue-rotate(347deg) brightness(94%) contrast(78%);
+}

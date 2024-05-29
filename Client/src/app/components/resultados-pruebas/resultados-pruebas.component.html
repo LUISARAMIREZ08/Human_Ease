@@ -1,0 +1,48 @@
+<app-header-psicologo></app-header-psicologo>
+<app-barra-herramientas-psicologo></app-barra-herramientas-psicologo>
+<div class="main-container">
+    <h1 class="roboto-bold">Resultados de pruebas Psicotecnicas</h1>
+    <div class="container">
+        <div class="postulante">
+            <div clasS="postulante-info">
+                <img src="assets/icons/user-2.svg" alt="User Icon">
+                <div class="info">
+                  <div>
+                    <h3 class="roboto-bold">Cedula: </h3>
+                    <p class="roboto-regular">{{postulante.id}}</p>
+                  </div>
+                  <div>
+                    <h3 class="roboto-bold">Nombre: </h3>
+                    <p class="roboto-regular">{{postulante.name}}</p>
+                  </div>
+                  <div>
+                    <h3 class="roboto-bold">Titulo Oferta: </h3>
+                    <p class="roboto-regular">{{postulante.titulo_oferta}}</p>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <ul class="pruebas">
+            <li class="prueba" *ngFor="let prueba of dataSource">
+              <div clasS="prueba-info">
+                <img src="assets/icons/smile_face.svg" alt="User Icon">
+                <div>
+                    <h3 class="roboto-bold">Tipo de prueba</h3>
+                    <p class="roboto-regular">{{prueba.tipo_prueba}}</p>
+                </div>
+                <div>
+                    <h3 class="roboto-bold">Resultados </h3>
+                    <p class="roboto-regular">{{prueba.resultados}}</p>
+                </div>
+                <div>
+                    <h3 class="roboto-bold">Observaciones </h3>
+                    <p class="roboto-regular">{{prueba.observaciones}}</p>
+                </div>
+              </div>
+              <div class="options">
+                <button class="roboto-medium"><img src="assets/icons/delete.svg" alt="delete"><p> Eliminar </p></button>
+              </div>
+            </li>
+        </ul>
+    </div>
+</div>
