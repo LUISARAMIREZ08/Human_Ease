@@ -1,0 +1,49 @@
+<app-header-psicologo></app-header-psicologo>
+<app-barra-herramientas-psicologo></app-barra-herramientas-psicologo>
+<div class="main-container">
+    <h1 class="roboto-bold">Añadir prueba Psicotecnica</h1>
+    <p class="roboto-medium">Sube los resultados de las pruebas del postulante</p>
+    <div class="container">
+        <div class="postulante">
+            <div clasS="postulante-info">
+                <img src="assets/icons/user-2.svg" alt="User Icon">
+                <div class="info">
+                  <div>
+                    <h3 class="roboto-bold">Cedula: </h3>
+                    <p class="roboto-regular">{{postulante.id}}</p>
+                  </div>
+                  <div>
+                    <h3 class="roboto-bold">Nombre: </h3>
+                    <p class="roboto-regular">{{postulante.name}}</p>
+                  </div>
+                  <div>
+                    <h3 class="roboto-bold">Titulo Oferta: </h3>
+                    <p class="roboto-regular">{{postulante.titulo_oferta}}</p>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <form action="">
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="prueba" class="roboto-medium">Prueba</label>
+                    <input type="text" id="prueba" class="roboto-regular" placeholder="Nombre de la prueba">
+                </div>
+                <div class="form-group">
+                    <label for="fecha" class="roboto-medium">Fecha</label>
+                    <input type="date" id="fecha" class="roboto-regular">
+                </div>
+                <div class="form-group">
+                    <label for="resultado" class="roboto-medium">Resultado</label>
+                    <input type="text" id="resultado" class="roboto-regular" placeholder="Resultado de la prueba">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="observaciones" class="roboto-medium">Observaciones</label>
+                <textarea name="observaciones" id="observaciones" cols="30" rows="10" class="roboto-regular" placeholder="Observaciones"></textarea>
+            </div>
+            <button class="roboto-medium">Subir</button>
+            <a class="roboto-medium" href="pruebas-psicotecnicas">Cancelar</a>
+        </form>
+    </div>
+</div>
