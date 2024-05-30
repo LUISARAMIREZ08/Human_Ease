@@ -110,6 +110,11 @@ export const routes: Routes = [
  {
    path: 'proceso-contratacion',
    loadComponent: () => import('./components/proceso-contratacion/proceso-contratacion.component')
+ },
+
+ {
+   path: 'ver-perfil',
+   loadComponent: () => import('./components/ver-perfil/ver-perfil.component')
  }
  
 ];
