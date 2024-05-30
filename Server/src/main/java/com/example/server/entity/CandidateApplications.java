@@ -26,7 +26,7 @@ public class CandidateApplications {
     private ApplicationStatus applicationStatus;
 
     @ManyToOne(targetEntity = UserEntity.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "card_id", nullable = false)
     private UserEntity userEntity;
 
     @ManyToOne(targetEntity = JobOffer.class, fetch = FetchType.LAZY)
