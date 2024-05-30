@@ -4,79 +4,29 @@
 
 <mat-sidenav-container class="container">
   <mat-sidenav class="options-offers" mode="side" opened>
-    <app-selector-oferta
-      offerId="oferta-1"
+    <app-selector-oferta *ngFor="let oferta of dataSource"
+      [offerId]="oferta.jobOfferId"
       imgSrc="assets/icons/work-bag-black.svg"
-      titulo="Titulo de oferta 1"
-      cargo="Cargo 1"
-      departamento="Departamento 1"
+      [titulo]="oferta.jobOfferName"
+      [cargo]="oferta.postulacion?.namePosition ?? ''"
+      [departamento]="oferta.postulacion?.department?.departmentName ?? ''"
       [selectedOffer]="selectedOffer"
-      (selectOffer)="selectOffer($event)">
-    </app-selector-oferta>
-    <app-selector-oferta
-      offerId="oferta-2"
-      imgSrc="assets/icons/work-bag-black.svg"
-      titulo="Titulo de oferta 2"
-      cargo="Cargo 2"
-      departamento="Departamento 2"
-      [selectedOffer]="selectedOffer"
-      (selectOffer)="selectOffer($event)">
-    </app-selector-oferta>
-    <app-selector-oferta
-      offerId="oferta-3"
-      imgSrc="assets/icons/work-bag-black.svg"
-      titulo="Titulo de oferta 3"
-      cargo="Cargo 2"
-      departamento="Departamento 2"
-      [selectedOffer]="selectedOffer"
-      (selectOffer)="selectOffer($event)">
-    </app-selector-oferta>
-    <app-selector-oferta
-      offerId="oferta-4"
-      imgSrc="assets/icons/work-bag-black.svg"
-      titulo="Titulo de oferta 4"
-      cargo="Cargo 2"
-      departamento="Departamento 2"
-      [selectedOffer]="selectedOffer"
-      (selectOffer)="selectOffer($event)">
-    </app-selector-oferta>
-    <app-selector-oferta
-      offerId="oferta-5"
-      imgSrc="assets/icons/work-bag-black.svg"
-      titulo="Titulo de oferta 5"
-      cargo="Cargo 2"
-      departamento="Departamento 2"
-      [selectedOffer]="selectedOffer"
-      (selectOffer)="selectOffer($event)">
+      (selectOffer)="selectOffer(oferta.jobOfferId)">
     </app-selector-oferta>
   </mat-sidenav>
   <mat-sidenav-content class="description-offers">
     <app-contenido-oferta
-      *ngIf="selectedOffer === 'oferta-1'"
-      offerId="oferta-1"
+      *ngFor="let oferta of dataSource"
+      [offerId]="oferta.jobOfferId"
       imgSrc="assets/icons/work-bag-black.svg"
-      titulo="Titulo de oferta 1"
-      cargo="Cargo 1"
-      departamento="Departamento 1"
-      nivelExperiencia="2 años"
-      tiempoEmpleo="Jornada completa"
-      fechaCreacion="25/04/2024"
-      fechaCierre="25/05/2024"
-      descripcion="We are in search of diligent, detail-oriented individuals to join our team as Remote Entry-Level Data Entry Clerks. If you have a passion for precision and thrive in independent work environments, this opportunity might be your ideal fit. Come join us in contributing to a dynamic, expanding organization where your skills will have a tangible impact."
-      [selectedOffer]="selectedOffer">
-    </app-contenido-oferta>
-    <app-contenido-oferta
-      *ngIf="selectedOffer === 'oferta-2'"
-      offerId="oferta-2"
-      imgSrc="assets/icons/work-bag-black.svg"
-      titulo="Titulo de oferta 2"
-      cargo="Cargo 2"
-      departamento="Departamento 2"
-      nivelExperiencia="3 años"
-      tiempoEmpleo="Medio tiempo"
-      fechaCreacion="01/05/2024"
-      fechaCierre="01/06/2024"
-      descripcion="We are looking for proactive individuals with excellent communication skills to join our marketing team. This role involves managing social media accounts, creating engaging content, and analyzing campaign performance."
+      [titulo]="oferta.jobOfferName"
+      [cargo]="oferta.postulacion?.namePosition ?? ''"
+      [departamento]="oferta.postulacion?.department?.departmentName ?? ''"
+      [nivelExperiencia]="oferta.postulacion?.levelOfExperience ?? ''"
+      [tiempoEmpleo]="oferta.postulacion?.employmentTime ?? ''"
+      [fechaCreacion]="oferta.jobOfferDate ?? ''"
+      [fechaCierre]="oferta.jobOfferExpirationDate ?? ''"
+      [descripcion]="oferta.jobOfferDescription ?? ''"
       [selectedOffer]="selectedOffer">
     </app-contenido-oferta>
   </mat-sidenav-content>

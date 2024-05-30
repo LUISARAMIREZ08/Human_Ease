@@ -15,27 +15,27 @@
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       
         <!-- Position Column -->
-        <ng-container matColumnDef="fecha_apertura">
+        <ng-container matColumnDef="jobOfferDate">
           <th mat-header-cell *matHeaderCellDef> Fecha de apertura </th>
-          <td mat-cell *matCellDef="let element"> {{element.fecha_apertura}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.jobOfferDate}} </td>
         </ng-container>
       
         <!-- Name Column -->
-        <ng-container matColumnDef="fecha_cierre">
+        <ng-container matColumnDef="jobOfferExpirationDate">
           <th mat-header-cell *matHeaderCellDef> Fecha de cierre </th>
-          <td mat-cell *matCellDef="let element"> {{element.fecha_cierre}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.jobOfferExpirationDate}} </td>
         </ng-container>
       
         <!-- Weight Column -->
-        <ng-container matColumnDef="titulo_oferta">
+        <ng-container matColumnDef="jobOfferName">
           <th mat-header-cell *matHeaderCellDef> Título de la oferta </th>
-          <td mat-cell *matCellDef="let element"> {{element.titulo_oferta}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.jobOfferName}} </td>
         </ng-container>
       
         <!-- Symbol Column -->
-        <ng-container matColumnDef="descripcion">
+        <ng-container matColumnDef="jobOfferDescription">
           <th mat-header-cell *matHeaderCellDef> Descripción </th>
-          <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+          <td mat-cell *matCellDef="let element" class="description"> {{element.jobOfferDescription}} </td>
         </ng-container>
 
         <ng-container matColumnDef="accion">
