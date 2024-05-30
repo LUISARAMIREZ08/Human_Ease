@@ -1,5 +1,6 @@
 package com.example.server.services;
 
+import com.example.server.controller.request.PositionRequestDTO;
 import com.example.server.entity.Departments;
 import com.example.server.entity.Position;
 import com.example.server.entity.Requirements;
@@ -35,11 +36,14 @@ public class PositionServices {
     }
 
     //This method save a position to the database
-    public Position savePosition(String namePosition, Long departmentId) {
+    public PositionRequestDTO savePosition(PositionRequestDTO positionRequestDTO){
         Position position = new Position();
-        position.setNamePosition(namePosition);
-        position.setDepartment(findDepartments(departmentId));
-        return positionRepository.save(position);
+        position.setNamePosition(positionRequestDTO.getNamePosition());
+        position.setLevelOfExperience(positionRequestDTO.getLevelOfExperience());
+        position.setEmploymentTime(positionRequestDTO.getEmploymentTime());
+        position.setDepartment(findDepartments(positionRequestDTO.getDepartmentId()));
+        positionRepository.save(position);
+        return positionRequestDTO;
     }
 
     private Departments findDepartments(Long departmentId) {

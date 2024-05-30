@@ -16,5 +16,9 @@ public class PositionRequestDTO {
     @NotNull
     public String namePosition;
     @NotNull
+    public String levelOfExperience;
+    @NotNull
+    public String employmentTime;
+    @NotNull
     public Long departmentId;
 }
