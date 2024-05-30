@@ -17,6 +17,4 @@ public class PositionRequestDTO {
     public String namePosition;
     @NotNull
     public Long departmentId;
-
-    public List<Long> requirements;
 }
