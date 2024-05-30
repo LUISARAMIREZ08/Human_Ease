@@ -38,7 +38,7 @@ export class LoginComponent{
             window.location.href = '/home-analista'
           }else if (this.loginService.getUserRole() == "CANDIDATE"){
             //vista usuario
-            window.location.href = '/usuario-cuenta'
+            window.location.href = '/ofertas-laborales'
           }else{
             this.loginService.logout(); // cerrar sesion
           }
@@ -58,8 +58,8 @@ export class LoginComponent{
     this.router.navigate(['/register']);
   }
 
-  //navigate to create-postulation
-  createPostulation(){
-    this.router.navigate(['/crear-postulacion']);
+  //navigate to ofertas-laborales
+  viewPostulations(){
+    this.router.navigate(['/ofertas-laborales']);
   }
 }

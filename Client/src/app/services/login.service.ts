@@ -59,7 +59,10 @@ export class LoginService {
 
   public getUserRole(){
     let user = this.getUser();
-    return user.authorities[0].authority;
+    if (user && user.authorities && user.authorities.length > 0) {
+      return user.authorities[0].authority;
+    }
+    return null;
   }
 
   public getCurrenUser(){
