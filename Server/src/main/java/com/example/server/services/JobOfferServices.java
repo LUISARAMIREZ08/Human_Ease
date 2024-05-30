@@ -1,7 +1,9 @@
 package com.example.server.services;
 
 import com.example.server.controller.request.JobOfferRequestDTO;
+import com.example.server.controller.response.JobOfferJoin;
 import com.example.server.controller.response.JobOfferResponseDTO;
+import com.example.server.controller.response.employee.EmployeeJoinCostCenter;
 import com.example.server.entity.Employee;
 import com.example.server.entity.JobOffer;
 import com.example.server.entity.Position;
@@ -85,4 +87,20 @@ public class JobOfferServices {
         return employeeRepository.findById(employeeId).orElseThrow(() ->
                 new RuntimeException("Employee not found with id " + employeeId));
     }
+
+    //Join JobOffer with Employee and UserEntity
+    public List<JobOfferJoin> findJobOfferDetails() {
+        return jobOfferRepository.findJobOfferDetails();
+    }
+
+    //Join JobOffer with Employee and UserEntity for id jobOffer
+    public List<JobOfferJoin> getEmployeeAndUserAndPosition(Long id) {
+        Optional<JobOffer> jobOffer = jobOfferRepository.findById(id);
+        if (jobOffer.isPresent()) {
+            return jobOfferRepository.findJobOfferDetails();
+        } else {
+            throw new RuntimeException("Job offer not found with id " + id);
+        }
+    }
+
 }
