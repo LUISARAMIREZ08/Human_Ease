@@ -36,17 +36,10 @@ public class JobOfferController {
         return this.jobOfferServices.saveJobOffer(request, new JobOffer());
     }
 
-    //Join query
-    @GetMapping(path = "/all")
-    public ResponseEntity<List<JobOfferJoin>> getAllJobOffersAndEmployees() {
-        List<JobOfferJoin> jobOffers = jobOfferServices.findJobOfferDetails();
-        return ResponseEntity.ok(jobOffers);
-    }
-
     //Join query for id
     @GetMapping(path = "/all/{id}")
     public ResponseEntity<List<JobOfferJoin>> getAllJobOffersAndEmployeesById(@PathVariable Long id) {
-        List<JobOfferJoin> jobOffers = jobOfferServices.getEmployeeAndUserAndPosition(id);
+        List<JobOfferJoin> jobOffers = jobOfferServices.findJobOfferDetails(id);
         return ResponseEntity.ok(jobOffers);
     }
 }

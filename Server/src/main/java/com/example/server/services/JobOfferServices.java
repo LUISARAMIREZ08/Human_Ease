@@ -89,18 +89,8 @@ public class JobOfferServices {
     }
 
     //Join JobOffer with Employee and UserEntity
-    public List<JobOfferJoin> findJobOfferDetails() {
-        return jobOfferRepository.findJobOfferDetails();
-    }
-
-    //Join JobOffer with Employee and UserEntity for id jobOffer
-    public List<JobOfferJoin> getEmployeeAndUserAndPosition(Long id) {
-        Optional<JobOffer> jobOffer = jobOfferRepository.findById(id);
-        if (jobOffer.isPresent()) {
-            return jobOfferRepository.findJobOfferDetails();
-        } else {
-            throw new RuntimeException("Job offer not found with id " + id);
-        }
+    public List<JobOfferJoin> findJobOfferDetails(Long id) {
+        return jobOfferRepository.findJobOfferDetails(id);
     }
 
 }
