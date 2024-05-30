@@ -56,6 +56,12 @@ public class CandidateApplicationsServices {
 
     //This method save candidate application
     public CandidateApplicationRequestDTO saveCandidateApplication(CandidateApplicationRequestDTO candidateApplicationRequestDTO) {
+        if (candidateApplicationRequestDTO.getCandidateApplicationId() != null) {
+            Optional<CandidateApplications> candidateApplications = candidateApplicationsRepository.findById(candidateApplicationRequestDTO.getCandidateApplicationId());
+            if (candidateApplications.isPresent()) {
+                return toDTO(candidateApplications.get());
+            }
+        }
         CandidateApplications candidateApplications = new CandidateApplications();
         candidateApplications.setApplicationDate(LocalDate.parse(candidateApplicationRequestDTO.getApplicationDate()));
         candidateApplications.setApplicationStatus(ApplicationStatus.valueOf(candidateApplicationRequestDTO.getApplicationStatus()));
