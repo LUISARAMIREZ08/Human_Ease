@@ -1,56 +1,58 @@
 <app-header></app-header>
 <app-barra-herramientas></app-barra-herramientas>
 
-<div class="main-container">
+<div class="main-container" [ngClass]="{'disabled': interfazDeshabilitada === true}">
     <h1 class="roboto-bold">Crear Postulación</h1>
-    <form class="roboto-light" action="">
+    <form class="roboto-light" [formGroup]="jobOfferForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-            <label for="tittle">Titulo</label>
-            <input type="text" placeholder="Titulo de la postulación" class="input" id="tittle">
+            <label for="jobOfferName">Titulo</label>
+            <input type="text" formControlName="jobOfferName" id="jobOfferName" placeholder="Titulo de la postulación" class="input" id="tittle">
         </div>
         
         <div class="form-group">
-            <label for="fecha">Fecha</label>
-            <input type="date" placeholder="Fecha de la postulación" class="input" id="fecha">
+            <label for="jobOfferDate">Fecha</label>
+            <input type="date" formControlName="jobOfferDate" id="jobOfferDate" placeholder="Fecha de la postulación" class="input" id="fecha">
         </div>
 
         <div class="form-group">
-            <label for="fecha-cierre">Fecha de cierre</label>
-            <input type="date" placeholder="Fecha de cierre de la postulación" class="input" id="fecha-cierre">
+            <label for="jobOfferExpirationDate">Fecha de cierre</label>
+            <input type="date" formControlName="jobOfferExpirationDate" id="jobOfferExpirationDate" placeholder="Fecha de cierre de la postulación" class="input" id="fecha-cierre">
         </div>
 
         <div class="form-group">
-            <label for="cargo">Cargo</label>
-            <select name="cargo" id="cargo" class="input">
+            <label for="positionId">Cargo</label>
+            <select formControlName="positionId" id="positionId" class="input" (change)="changeSelect()">
                 <option value="">Seleccionar cargo</option>
+                <option *ngFor="let cargo of position" [value]="cargo.positionId">{{cargo.namePosition}}</option>
             </select>
-        </div>
-
-        <div class="form-group">
+          </div>
+          
+          <div class="form-group">
             <label for="departamento">Departamento</label>
-            <input type="text" placeholder="Departamento del cargo" class="input" id="departamento">
-        </div>
-
-        <div class="form-group">
+            <input type="text" placeholder="Departamento del cargo" class="input" id="departamento" name="departmentName" [value]="selectedDepartment" readonly>
+          </div>
+          
+          <div class="form-group">
             <label for="experiencia">Nivel de experiencia</label>
-            <input type="text" placeholder="Nivel de experiencia del cargo" class="input" id="experiencia">
-        </div>
-
-        <div class="form-group">
+            <input type="text" placeholder="Nivel de experiencia del cargo" class="input" id="experiencia" name="levelOfExperience" [value]="selectedExperience" readonly>
+          </div>
+          
+          <div class="form-group">
             <label for="tiempo">Tiempo de empleo</label>
-            <input type="text" placeholder="Jornada del empleo" class="input" id="tiempo">
-        </div>
+            <input type="text" placeholder="Jornada del empleo" class="input" id="tiempo" name="employmentTime" [value]="selectedTime" readonly>
+          </div>
 
         <div class="form-group">
-            <label for="lider">Lider del proceso</label>
-            <select name="" id="lider" class="input">
+            <label for="employeeId">Lider del proceso</label>
+            <select formControlName="employeeId" id="employeeId" class="input">
                 <option value="">Seleccionar lider</option>
+                <option *ngFor="let jefe of employee" [value]="jefe.employeeId">{{jefe.employeeName + " " + jefe.employeeLastName + " - " + jefe.namePosition}}</option>
             </select>
         </div>
 
         <div class="form-group full-width">
-            <label for="descripcion">Descripción</label>
-            <textarea name="" id="descripcion" class="input"></textarea>
+            <label for="jobOfferDescription">Descripción</label>
+            <textarea formControlName="jobOfferDescription" id="jobOfferDescription" class="input" maxlength="1000"></textarea>
         </div>
 
         <div class="button">

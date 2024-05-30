@@ -1,5 +1,6 @@
 <app-header-ofertas *ngIf="userRole == null"></app-header-ofertas>
-<app-header-usuario-logueado *ngIf="userRole == ('CANDIDATE' || 'ADMIN')"></app-header-usuario-logueado>
+<app-header-usuario-logueado *ngIf="userRole == 'CANDIDATE'"></app-header-usuario-logueado>
+<app-header *ngIf="userRole == 'ADMIN'"></app-header>
 
 <mat-sidenav-container class="container">
   <mat-sidenav class="options-offers" mode="side" opened>

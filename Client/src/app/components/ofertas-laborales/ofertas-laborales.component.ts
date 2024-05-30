@@ -5,12 +5,13 @@ import SelectorOfertaComponent from '../selector-oferta/selector-oferta.componen
 import ContenidoOfertaComponent from '../contenido-oferta/contenido-oferta.component';
 import HeaderOfertasComponent from '../header-ofertas/header-ofertas.component';
 import HeaderUsuarioLogueadoComponent from '../header-usuario-logueado/header-usuario-logueado.component';
+import HeaderComponent from '../header/header.component';
 import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-ofertas-laborales',
   standalone: true,
-  imports: [CommonModule, MatSidenavModule, HeaderOfertasComponent, HeaderUsuarioLogueadoComponent, SelectorOfertaComponent, ContenidoOfertaComponent],
+  imports: [CommonModule, MatSidenavModule,HeaderComponent, HeaderOfertasComponent, HeaderUsuarioLogueadoComponent, SelectorOfertaComponent, ContenidoOfertaComponent],
   templateUrl: './ofertas-laborales.component.html',
   styleUrls: ['./ofertas-laborales.component.css']
 })
