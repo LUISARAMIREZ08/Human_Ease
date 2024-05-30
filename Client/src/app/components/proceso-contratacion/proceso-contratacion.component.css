@@ -1,0 +1,208 @@
+.info{
+    display: flex;
+    align-items: start;
+    padding: 30px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 95%;
+    margin-bottom: 20px;
+}
+
+.img-user{
+    width: 100px;
+    height: 100px;
+    background-color: #CCEEFF;
+    border-radius: 50%;
+}
+
+.employee-info{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.item-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.item-info p{
+    margin: 0px;
+    margin-right: 10px;
+}
+
+.item{
+    display: flex;
+    text-align: center;
+}
+
+.item p{
+    margin: 0px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+}
+
+.form-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form-group h3{
+    margin-right: 20px;
+}
+
+.form-group input{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.progress {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 200px; /* Ajusta esto según sea necesario */
+}
+
+.item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.number{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 2px solid black;
+    font-size: 20px;
+    background-color: white;
+    margin-bottom: 0px;
+}
+
+.active{
+    background-color: #004466;
+    color: white;
+}
+
+.line-container {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    width: 90%; /* Ajusta esto según sea necesario */
+    display: flex;
+    justify-content: center;
+}
+
+.line {
+    width: 100%;
+    height: 2px; /* Ajusta el grosor de la línea según sea necesario */
+    background-color: black; /* Ajusta el color de la línea según sea necesario */
+}
+
+.submit-button {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: darkgreen;
+}
+
+.button {
+    grid-column: 2/3;
+    justify-self: center;
+}
+
+.button a{
+    text-decoration: none;
+}
+
+.cancel-button {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.cancel-button:hover {
+    background-color: darkred;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container h3{
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+.acciones-proceso {
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-top: 0px;
+    width: 30%; /* Ajusta esto según sea necesario */
+}
+
+.item-accion {
+  height: max-content;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.item-accion img {
+    width: 25px;
+    height: 25px;
+    padding-left: 25%;
+    background: none;
+}
+
+.item-accion .icon-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.item-accion a {
+    text-decoration: none;
+    margin-bottom: 5px;
+    color: black;
+}
+
