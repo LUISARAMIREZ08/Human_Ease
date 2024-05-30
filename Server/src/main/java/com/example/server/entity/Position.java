@@ -21,6 +21,12 @@ public class Position {
     @Column(name="name_position", nullable = false, length = 100)
     private String namePosition;
 
+    @Column(name="level_of_experience", nullable = false, length = 100)
+    private String levelOfExperience;
+
+    @Column(name="employment_time", nullable = false, length = 100)
+    private String employmentTime;
+
     @ManyToOne(targetEntity = Departments.class)
     @JoinColumn(name = "department_id", nullable = false)
     private Departments department;
