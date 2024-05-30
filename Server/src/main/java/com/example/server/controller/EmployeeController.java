@@ -1,6 +1,7 @@
 package com.example.server.controller;
 
 import com.example.server.controller.request.EmployeeRequestDTO;
+import com.example.server.controller.response.employee.EmployeeAdmin;
 import com.example.server.controller.response.employee.EmployeeJoin;
 import com.example.server.controller.response.employee.EmployeeJoinCostCenter;
 import com.example.server.controller.response.employee.EmployeeResponseDTO;
@@ -57,4 +58,9 @@ public class EmployeeController {
         return ResponseEntity.ok(employees);
     }
 
+    @GetMapping("/admins")
+    public ResponseEntity<List<EmployeeAdmin>> getAdminEmployees() {
+        List<EmployeeAdmin> admins = employeeServices.getAdminEmployees();
+        return ResponseEntity.ok(admins);
+    }
 }

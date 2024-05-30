@@ -1,6 +1,7 @@
 package com.example.server.services;
 
 import com.example.server.controller.request.EmployeeRequestDTO;
+import com.example.server.controller.response.employee.EmployeeAdmin;
 import com.example.server.controller.response.employee.EmployeeJoin;
 import com.example.server.controller.response.employee.EmployeeJoinCostCenter;
 import com.example.server.controller.response.employee.EmployeeResponseDTO;
@@ -104,5 +105,9 @@ public class EmployeeServices {
     //This method return employed join cost center and user
     public List<EmployeeJoinCostCenter> getEmployeeAndUserAndCostCenter() {
         return employeeRepository.getEmployeeAndUserAndCostCenter();
+    }
+
+    public List<EmployeeAdmin> getAdminEmployees() {
+        return employeeRepository.getAdminEmployees();
     }
 }

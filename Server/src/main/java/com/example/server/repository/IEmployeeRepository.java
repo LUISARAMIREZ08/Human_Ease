@@ -1,5 +1,6 @@
 package com.example.server.repository;
 
+import com.example.server.controller.response.employee.EmployeeAdmin;
 import com.example.server.controller.response.employee.EmployeeJoin;
 import com.example.server.controller.response.employee.EmployeeJoinCostCenter;
 import com.example.server.entity.Employee;
@@ -26,4 +27,13 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
             "JOIN e.userEntity u "+
             "JOIN e.costCenter c")
     List<EmployeeJoinCostCenter> getEmployeeAndUserAndCostCenter();
+
+    //All Admins
+    @Query("SELECT new com.example.server.controller.response.employee.EmployeeAdmin(" +
+            "e.employeeId, u.cardId, p.namePosition, u.name, u.lastName) " +
+            "FROM Employee e " +
+            "JOIN e.userEntity u " +
+            "JOIN e.position p " +
+            "WHERE u.roleUser = 'ADMIN'")
+    List<EmployeeAdmin> getAdminEmployees();
 }
