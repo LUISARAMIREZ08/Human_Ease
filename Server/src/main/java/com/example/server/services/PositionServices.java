@@ -35,11 +35,10 @@ public class PositionServices {
     }
 
     //This method save a position to the database
-    public Position savePosition(String namePosition, Long departmentId, List<Long> requirementsId) {
+    public Position savePosition(String namePosition, Long departmentId) {
         Position position = new Position();
         position.setNamePosition(namePosition);
         position.setDepartment(findDepartments(departmentId));
-        position.setRequirements(findRequirements(requirementsId));
         return positionRepository.save(position);
     }
 
@@ -48,12 +47,4 @@ public class PositionServices {
                 new RuntimeException("Department not found"));
     }
 
-    private List<Requirements> findRequirements(List<Long> requirementsId) {
-        List<Requirements> requirements = new ArrayList<>();
-        for (Long id : requirementsId) {
-            requirements.add(requirementsRepository.findById(id).orElseThrow(() ->
-                    new RuntimeException("Requirement not found")));
-        }
-        return requirements;
-    }
 }

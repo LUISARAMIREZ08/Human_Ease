@@ -32,8 +32,8 @@ public class PositionController {
 
     @PostMapping
     public Position savePosition(@RequestBody PositionRequestDTO request) {
-        return this.positionServices.savePosition(request.getNamePosition(),
-                request.getDepartmentId(),
-                request.getRequirements());
+        return this.positionServices.savePosition(
+                request.getNamePosition(),
+                request.getDepartmentId());
     }
 }

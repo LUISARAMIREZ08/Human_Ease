@@ -21,11 +21,7 @@ public class Position {
     @Column(name="name_position", nullable = false, length = 100)
     private String namePosition;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Departments.class)
     @JoinColumn(name = "department_id", nullable = false)
     private Departments department;
-
-    @OneToMany(targetEntity = Requirements.class, mappedBy = "position", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonBackReference
-    private List<Requirements> requirements;
 }
