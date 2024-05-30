@@ -54,7 +54,7 @@ export default class ContenidoOfertaComponent {
   aplicationOffer(): void {
     this.aplication.jobOffer = parseInt(this.offerId);
     if (this.userInfo === null) {
-      return;
+      window.location.href = '/register'
     }
     this.aplication.userEntity = parseInt(this.userInfo.cardId);
     this.aplication.applicationDate = new Date().toISOString().split('T')[0];
