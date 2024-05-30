@@ -3,7 +3,9 @@ package com.example.server.services;
 import com.example.server.controller.request.CandidateApplicationRequestDTO;
 import com.example.server.controller.request.NoveltyRequestDTO;
 import com.example.server.entity.CandidateApplications;
+import com.example.server.entity.JobOffer;
 import com.example.server.entity.Novelty;
+import com.example.server.entity.UserEntity;
 import com.example.server.entity.enums.ApplicationStatus;
 import com.example.server.repository.ICandidateApplicationsRepository;
 import com.example.server.repository.IJobOfferRepository;
@@ -56,18 +58,24 @@ public class CandidateApplicationsServices {
 
     //This method save candidate application
     public CandidateApplicationRequestDTO saveCandidateApplication(CandidateApplicationRequestDTO candidateApplicationRequestDTO) {
-        if (candidateApplicationRequestDTO.getCandidateApplicationId() != null) {
-            Optional<CandidateApplications> candidateApplications = candidateApplicationsRepository.findById(candidateApplicationRequestDTO.getCandidateApplicationId());
-            if (candidateApplications.isPresent()) {
-                return toDTO(candidateApplications.get());
-            }
-        }
-        CandidateApplications candidateApplications = new CandidateApplications();
-        candidateApplications.setApplicationDate(LocalDate.parse(candidateApplicationRequestDTO.getApplicationDate()));
-        candidateApplications.setApplicationStatus(ApplicationStatus.valueOf(candidateApplicationRequestDTO.getApplicationStatus()));
-        candidateApplications.setUserEntity(userRepository.findById(candidateApplicationRequestDTO.getUserEntity()).get());
-        candidateApplications.setJobOffer(jobOfferRepository.findById(candidateApplicationRequestDTO.getJobOffer()).get());
-        return toDTO(candidateApplicationsRepository.save(candidateApplications));
-    }
+        //si el usuario existe y el jobOffer existe
+        // Verifica si el usuario y la oferta de trabajo existen
+        UserEntity userEntity = userRepository.findById(candidateApplicationRequestDTO.getUserEntity())
+                .orElseThrow(() -> new IllegalArgumentException("User not found: " + candidateApplicationRequestDTO.getUserEntity()));
 
+        JobOffer jobOffer = jobOfferRepository.findById(candidateApplicationRequestDTO.getJobOffer())
+                .orElseThrow(() -> new IllegalArgumentException("Job offer not found: " + candidateApplicationRequestDTO.getJobOffer()));
+
+        // Verifica si el usuario ya ha aplicado para esta oferta de trabajo
+        List<CandidateApplications> existingApplications = candidateApplicationsRepository.findCandidateApplicationsByJobOffer(jobOffer, userEntity);
+        if (!existingApplications.isEmpty()) {
+            throw new RuntimeException("The user has already applied for this job offer");
+        }
+        CandidateApplications candidateApplicationsNew = new CandidateApplications();
+        candidateApplicationsNew.setApplicationDate(LocalDate.parse(candidateApplicationRequestDTO.getApplicationDate()));
+        candidateApplicationsNew.setApplicationStatus(ApplicationStatus.valueOf(candidateApplicationRequestDTO.getApplicationStatus()));
+        candidateApplicationsNew.setUserEntity(userRepository.findById(candidateApplicationRequestDTO.getUserEntity()).get());
+        candidateApplicationsNew.setJobOffer(jobOfferRepository.findById(candidateApplicationRequestDTO.getJobOffer()).get());
+        return toDTO(candidateApplicationsRepository.save(candidateApplicationsNew));
+    }
 }
