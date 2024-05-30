@@ -25,6 +25,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/auth/**").permitAll();
+                    auth.requestMatchers("/job-offer/**").permitAll();
                     auth.anyRequest().authenticated();
                 })
                 .sessionManagement(session ->{

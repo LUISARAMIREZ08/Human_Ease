@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ApiService } from '../../services/api.service';
 import { LoginService } from '../../services/login.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface Aplication{
   applicationDate: string;
@@ -22,7 +23,8 @@ export default class ContenidoOfertaComponent {
 
   constructor(
     private api: ApiService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private snack: MatSnackBar
   ) { }
 
   @Input() imgSrc: string = '';
@@ -58,7 +60,13 @@ export default class ContenidoOfertaComponent {
     this.aplication.applicationDate = new Date().toISOString().split('T')[0];
     console.log(this.aplication);
     this.api.postAPI('candidateApplications', this.aplication).subscribe((data: any) => {
-      console.log(data);
-    });
-  }
+      window.location.href = '/procesos-activos'
+    },
+    (error: any) => {
+      console.log(error);
+      this.snack.open("Ya te postulaste a esta oferta",'Cerrar'),{
+        duration:3000
+      }
+  });
+}
 }
