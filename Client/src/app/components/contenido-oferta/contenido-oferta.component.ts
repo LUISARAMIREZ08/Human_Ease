@@ -53,6 +53,9 @@ export default class ContenidoOfertaComponent {
 
   aplicationOffer(): void {
     this.aplication.jobOffer = parseInt(this.offerId);
+    if (this.userInfo === null) {
+      return;
+    }
     this.aplication.userEntity = parseInt(this.userInfo.cardId);
     this.aplication.applicationDate = new Date().toISOString().split('T')[0];
     console.log(this.aplication);

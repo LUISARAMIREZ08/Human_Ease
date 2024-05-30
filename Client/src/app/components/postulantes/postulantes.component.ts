@@ -15,8 +15,7 @@ export interface Postulantes {
   jobOffer: number;
   user:{
     name: string;
-    last_name: string;
-  
+    lastName: string;
   }
 }
 
@@ -48,17 +47,32 @@ export default class PostulantesComponent {
         this.jobOfferName = jobOfferName;
 
         if (typeof localStorage !== 'undefined') { // Esto fue añadido por localstorage indefinidio en el navegador
-          this.api.getAPI('job-offer/all/'+this.jobOfferId).subscribe((data: Postulantes[]) => {
+          this.api.getAPI('candidateApplications').subscribe((data: Postulantes[]) => {
+            //Filramos los postulantes por la oferta laboral seleccionada
+            data = data.filter((postulante) => postulante.jobOffer == parseInt(this.jobOfferId));
             this.dataSource = new MatTableDataSource(data);
+
+            //Agregamos el nombre de los postulantes /user/{userEntity}
+            data.forEach((postulante) => {
+              this.api.getAPI('user/' + postulante.userEntity).subscribe((data: any) => {
+                postulante.user = data;
+              });
+            });
+
           });
           this.dataSource = new MatTableDataSource(this.data);
-          console.log(this.dataSource)
         }
       } else{
         this.jobOfferName = "Todas"
         if (typeof localStorage !== 'undefined') {
           this.api.getAPI('candidateApplications').subscribe((data: Postulantes[]) => {
             this.dataSource = new MatTableDataSource(data);
+            //Agregamos el nombre de los postulantes /user/{userEntity}
+            data.forEach((postulante) => {
+              this.api.getAPI('user/' + postulante.userEntity).subscribe((data: any) => {
+                postulante.user = data;
+              });
+            });
           });
           this.dataSource = new MatTableDataSource(this.data);
         }

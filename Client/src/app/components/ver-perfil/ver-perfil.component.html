@@ -2,50 +2,50 @@
 <app-barra-herramientas></app-barra-herramientas>
 
 <div class="main-container">
-<mat-grid-list cols="3" rowHeight="120px">
+<mat-grid-list cols="3" rowHeight="120px" *ngIf="dataSource">
     <mat-grid-tile colspan="3">
         <h1 class="roboto-bold">Datos personales</h1>
     </mat-grid-tile>
     <mat-grid-tile>
         <div class="item">
             <label class="roboto-bold" for="nombre">Nombre</label>
-            <input class="input-readonly roboto-bold" type="text" [value]="" id="nombre" readonly>
+            <input class="input-readonly roboto-bold" type="text" [value]="dataSource.name" id="nombre" readonly>
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
         <div class="item">
             <label class="roboto-bold" for="apellido">Apellido</label>
-            <input class="input-readonly roboto-bold" type="text" [value]="" id="apellido" readonly>
+            <input class="input-readonly roboto-bold" type="text" [value]="dataSource.lastName" id="apellido" readonly>
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
         <div class="item">
             <label class="roboto-bold" for="usuario">Usuario</label>
-            <input class="input-readonly roboto-bold" type="text" [value]="" id="usuario" readonly>
+            <input class="input-readonly roboto-bold" type="text" [value]="dataSource.username" id="usuario" readonly>
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
         <div class="item">
             <label class="roboto-bold" for="fecha">Fecha de nacimiento</label>
-            <input class="input-readonly roboto-bold" type="text" [value]="" id="fecha" readonly>
+            <input class="input-readonly roboto-bold" type="text" [value]="dataSource.birthDate" id="fecha" readonly>
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
         <div class="item">
             <label class="roboto-bold" for="telefono">Telefono</label>
-            <input class="input-readonly roboto-bold" type="text" [value]="" id="telefono" readonly>
+            <input class="input-readonly roboto-bold" type="text" [value]="dataSource.phone" id="telefono" readonly>
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
         <div class="item">
             <label class="roboto-bold" for="direccion">Dirección</label>
-            <input class="input-readonly roboto-bold" type="text" [value]="" id="direccion" readonly>
+            <input class="input-readonly roboto-bold" type="text" [value]="dataSource.address" id="direccion" readonly>
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
         <div class="item">
             <label class="roboto-bold" for="correo">Correo electronico</label>
-            <input class="input-readonly roboto-bold" type="text" [value]="" id="correo" readonly>
+            <input class="input-readonly roboto-bold" type="text" [value]="dataSource.email" id="correo" readonly>
         </div>
     </mat-grid-tile>
 </mat-grid-list>
