@@ -1,0 +1,182 @@
+<app-header></app-header>
+<app-barra-herramientas></app-barra-herramientas>
+
+<div class="main-container">
+    <h1 class="roboto-bold">Proceso de contratación</h1>
+
+    <div class="info">
+        <img class="img-user" src="assets/icons/user-2.svg" alt="User_icon">
+        <div class="employee-info">
+            <div class="item-info">
+                <p class="roboto-bold">Postulante: </p>
+                <p class="roboto-regular" type="text" id="name">Jense David Martinez Tobón</p>
+            </div>
+            <div class="item-info">
+                <p class="roboto-bold">Cedula: </p>
+                <p class="roboto-regular" type="text" id="cedula">1004685332</p>
+            </div>
+            <div class="item-info">
+                <p class="roboto-bold">Teléfono: </p>
+                <p class="roboto-regular" type="text" id="number">3187213958</p>
+            </div>
+            <div class="item-info">
+                <div class="item-info">
+                    <p class="roboto-bold">Fecha de inicio: </p>
+                    <p class="roboto-regular" type="text" id="periodo">23/04/2024</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="acciones-proceso">
+            <ng-container *ngIf="step === 2">
+                <div class="item-accion">
+                    <p class="roboto-bold">Acciones</p>
+                    <a href="" class="roboto-regular">Pruebas psicotécnicas</a>
+                </div>
+                <div class="item-accion">
+                    <p class="roboto-bold">Estado</p>
+                    <div class="icon-container">
+                        <img src="assets/icons/{{ estados[2] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(2)">
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="step === 3">
+                <div class="item-accion">
+                    <p class="titulo roboto-bold">Acciones</p>
+                    <a href="" class="roboto-regular">Referencias laborales</a>
+                    <a href="" class="roboto-regular">Antecedentes</a>
+                </div>
+                <div class="item-accion">
+                    <p class="titulo roboto-bold">Estado</p>
+                    <div class="icon-container">
+                        <img src="assets/icons/{{ estados[3] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(3)">
+                        <img src="assets/icons/{{ estados[4] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(4)">
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="step === 4">
+                <div class="item-accion">
+                    <p class="roboto-bold">Tipo de ingreso</p>
+                    <a href="" class="roboto-regular">Directo</a>
+                    <a href="" class="roboto-regular">MISION PLUS</a>
+                </div>
+                <div class="item-accion">
+                    <p class="roboto-bold">Estado</p>
+                    <div class="icon-container">
+                        <img src="assets/icons/{{ estados[5] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(5)">
+                        <img src="assets/icons/{{ estados[6] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(6)">
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="step === 5">
+                <div class="item-accion">
+                    <p class="roboto-bold">Acciones</p>
+                    <a href="" class="roboto-regular">Solicitar documentación</a>
+                </div>
+                <div class="item-accion">
+                    <p class="roboto-bold">Estado</p>
+                    <div class="icon-container">
+                        <img src="assets/icons/{{ estados[7] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(7)">
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="step === 6">
+                <div class="item-accion">
+                    <p class="roboto-bold">Acciones</p>
+                    <a href="" class="roboto-regular">Exámenes médicos</a>
+                </div>
+                <div class="item-accion">
+                    <p class="roboto-bold">Estado</p>
+                    <div class="icon-container">
+                        <img src="assets/icons/{{ estados[8] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(8)">
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="step === 7">
+                <div class="item-accion">
+                    <p class="roboto-bold">Acciones</p>
+                    <a href="" class="roboto-regular">Realizar contrato</a>
+                    <a href="" class="roboto-regular">Archivar información del candidato</a>
+                </div>
+                <div class="item-accion">
+                    <p class="roboto-bold">Estado</p>
+                    <div class="icon-container">
+                        <img src="assets/icons/{{ estados[9] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(9)">
+                        <img src="assets/icons/{{ estados[10] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(10)">
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="step === 8">
+                <div class="item-accion">
+                    <p class="roboto-bold">Acción</p>
+                    <a href="" class="roboto-regular"> ARL COLPATRIA</a>
+                    <a href="" class="roboto-regular">CDC CONFAMILIAR</a>
+                    <a href="" class="roboto-regular">SOS SURA</a>
+                    <a href="" class="roboto-regular">EPS NUEVA EPS</a>
+                </div>
+                <div class="item-accion">
+                    <p class="roboto-bold">Estado</p>
+                    <div class="icon-container">
+                        <img src="assets/icons/{{ estados[11] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(11)">
+                        <img src="assets/icons/{{ estados[12] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(12)">
+                        <img src="assets/icons/{{ estados[13] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(13)">
+                        <img src="assets/icons/{{ estados[14] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(14)">
+                    </div>
+
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="step === 9">
+                <div class="item-accion">
+                    <p class="roboto-bold">Acciones</p>
+                    <a href="" class="roboto-regular">Notificar</a>
+                </div>
+                <div class="item-accion">
+                    <p class="roboto-bold">Estado</p>
+                    <div class="icon-container">
+                        <img src="assets/icons/{{ estados[15] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(15)">
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+
+    <form (submit)="onSubmit($event)">
+        <div class="progress">
+            <div class="item" *ngFor="let stepNumber of steps; let i = index">
+                <p [ngClass]="{'active': step === i + 1}" class="number roboto-regular">{{ i + 1 }}</p>
+                <p class="title roboto-regular">{{ stepTitles[i] }}</p>
+            </div>
+            
+            <div class="line-container">
+                <p class="line roboto-regular"></p>
+            </div>
+        </div>
+        
+        <div class="button-group">
+            <button *ngIf="step === 1" type="submit" class="submit-button roboto-medium" (click)="nextStep()">Habilitar pruebas psicotécnicas</button>
+            <button *ngIf="step === 2" type="submit" class="submit-button roboto-medium" (click)="nextStep()">Empezar verificaciones</button>
+            <button *ngIf="step === 3" type="submit" class="submit-button roboto-medium" (click)="nextStep()">Definir tipo de ingreso</button>
+            <button *ngIf="step === 4" type="submit" class="submit-button roboto-medium" (click)="nextStep()">Revisar documentos</button>
+            <button *ngIf="step === 5" type="submit" class="submit-button roboto-medium" (click)="nextStep()">Agendar exámenes médicos</button>
+            <button *ngIf="step === 6" type="submit" class="submit-button roboto-medium" (click)="nextStep()">Realizar contrato</button>
+            <button *ngIf="step === 7" type="submit" class="submit-button roboto-medium" (click)="nextStep()">Realizar afiliaciones</button>
+            <button *ngIf="step === 8" type="submit" class="submit-button roboto-medium" (click)="nextStep()">Finalizar proceso</button>
+            <button *ngIf="step === 9" class="submit-button roboto-medium" (click)="nextStep()">Finalizar</button>
+            
+            <div *ngIf="step === 10" class="container">
+                <h3 class="roboto-regular">Proceso completado</h3>
+                <a href="" class="submit-button roboto-medium" (click)="reloadPage($event)">Realizar otra acción</a>
+            </div>
+
+            <!-- Botón de Cancelar -->
+            <button type="button" class="cancel-button roboto-medium" (click)="cancelProcess()">Cancelar proceso</button>
+        </div>
+    </form>
+</div>

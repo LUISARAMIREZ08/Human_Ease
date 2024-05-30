@@ -106,5 +106,10 @@ export const routes: Routes = [
   path: 'resultados-pruebas',
   loadComponent: () => import ('./components/resultados-pruebas/resultados-pruebas.component')
  },
+
+ {
+   path: 'proceso-contratacion',
+   loadComponent: () => import('./components/proceso-contratacion/proceso-contratacion.component')
+ }
  
 ];
