@@ -6,27 +6,15 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import HeaderComponent from '../header/header.component';
 import BarraHerramientasComponent from '../barra-herramientas/barra-herramientas.component';
+import { ApiService } from '../../services/api.service';
 
 export interface Postulacion {
-  fecha_apertura: string;
-  fecha_cierre: string;
-  titulo_oferta: string;
-  descripcion: string;
+  jobOfferId: string;
+  jobOfferDate: string;
+  jobOfferExpirationDate: string;
+  jobOfferName: string;
+  jobOfferDescription: string;
 }
-
-const ELEMENT_DATA: Postulacion[] = [
-  {fecha_apertura: '2021-10-01', fecha_cierre: '2021-10-10', titulo_oferta: 'Cocinero', descripcion: 'Se necesita cocinero con experiencia'},
-  {fecha_apertura: '2021-10-01', fecha_cierre: '2021-10-10', titulo_oferta: 'Mesero', descripcion: 'Se necesita mesero con experiencia'},
-  {fecha_apertura: '2021-10-01', fecha_cierre: '2021-10-10', titulo_oferta: 'Cajero', descripcion: 'Se necesita cajero con experiencia'},
-  {fecha_apertura: '2021-10-01', fecha_cierre: '2021-10-10', titulo_oferta: 'Cocinero', descripcion: 'Se necesita cocinero con experiencia'},
-  {fecha_apertura: '2021-10-01', fecha_cierre: '2021-10-10', titulo_oferta: 'Mesero', descripcion: 'Se necesita mesero con experiencia'},
-  {fecha_apertura: '2021-10-01', fecha_cierre: '2021-10-10', titulo_oferta: 'Cajero', descripcion: 'Se necesita cajero con experiencia'},
-  {fecha_apertura: '2021-10-01', fecha_cierre: '2021-10-10', titulo_oferta: 'Cocinero', descripcion: 'Se necesita cocinero con experiencia'},
-  {fecha_apertura: '2021-10-01', fecha_cierre: '2021-10-10', titulo_oferta: 'Mesero', descripcion: 'Se necesita mesero con experiencia'},
-  {fecha_apertura: '2021-10-01', fecha_cierre: '2021-10-10', titulo_oferta: 'Cajero', descripcion: 'Se necesita cajero con experiencia'},
-  {fecha_apertura: '2021-10-01', fecha_cierre: '2021-10-10', titulo_oferta: 'Cocinero', descripcion: 'Se necesita cocinero con experiencia'},
-  {fecha_apertura: '2021-10-01', fecha_cierre: '2021-10-10', titulo_oferta: 'Mesero', descripcion: 'Se necesita mesero con experiencia'}
-];
 
 @Component({
   selector: 'app-postulaciones',
@@ -36,9 +24,22 @@ const ELEMENT_DATA: Postulacion[] = [
   styleUrl: './postulaciones.component.css'
 })
 export default class PostulacionesComponent {
-  displayedColumns: string[] = ['fecha_apertura', 'fecha_cierre', 'titulo_oferta', 'descripcion', 'accion'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  constructor(private api: ApiService,
+    private router: Router, 
+  ) { }
 
+  displayedColumns: string[] = ['jobOfferDate', 'jobOfferExpirationDate', 'jobOfferName', 'jobOfferDescription', 'accion'];
+  data:any;
+  dataSource :any;
+
+  ngOnInit(): void {
+    if (typeof localStorage !== 'undefined') { // Esto fue añadido por localstorage indefinidio en el navegador
+      this.api.getAPI('job-offer').subscribe((data: Postulacion[]) => {
+        this.dataSource = new MatTableDataSource(data);
+      });
+      this.dataSource = new MatTableDataSource(this.data);
+    }
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -54,6 +55,6 @@ export default class PostulacionesComponent {
   }
 
   viewPostulantes(element: any): void{
-    console.log(element);
+    window.location.href = '/postulantes?jobOfferId=' + element.jobOfferId + '&jobOfferName=' + element.jobOfferName;
   }
 }
