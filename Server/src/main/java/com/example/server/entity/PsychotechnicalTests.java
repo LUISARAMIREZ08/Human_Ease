@@ -29,7 +29,7 @@ public class PsychotechnicalTests {
     @Column(name="test_result", nullable = false, length = 100)
     private String testResult;
 
-    @ManyToOne(targetEntity = UserEntity.class, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "candidate_application_id", nullable = false)
     private CandidateApplications candidateApplications;
 
