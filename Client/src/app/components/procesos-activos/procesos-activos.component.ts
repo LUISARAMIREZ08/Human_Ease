@@ -18,6 +18,11 @@ export interface Aplication {
   fecha: string;
 }
 
+export interface Interview{
+  link: string;
+  candidateApplicationId: number;
+}
+
 interface Dictionary {
   [key: string]: string;
 }
@@ -66,9 +71,12 @@ export default class ProcesosActivosComponent {
         data.forEach((aplication) => {
           //Se establece el link de la oferta segun el estado de la aplicacion
           if (aplication.applicationStatus == 'FIRST_INTERVIEW') {
-            aplication.link = 'https://meet.google.com/'; //Link de la reunion de google meet
+            this.api.getAPI('interview').subscribe((data: Interview[]) => {
+              data = data.filter((interview) => interview.candidateApplicationId == aplication.candidateApplicationId);
+              aplication.link = data[0].link;
+            });
           } else if (aplication.applicationStatus == 'PSYCHOTHENIC_TESTING') {
-            aplication.link = '/postulantes'; //Link al formulario de google
+            aplication.link = 'https://docs.google.com/forms/d/e/1FAIpQLSdd3eZ4aomOqJFFjje2gH707RxEpLtWqyk_0rUGmwtLIhLuAw/viewform?usp=sf_link'; //Link al formulario de google
           } else if (aplication.applicationStatus == 'DOCUMENTATION') {
             aplication.link = '/usuario-cuenta';
           }
