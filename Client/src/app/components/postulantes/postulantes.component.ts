@@ -16,6 +16,8 @@ export interface Postulantes {
   user:{
     name: string;
     lastName: string;
+    phone: string;
+    email: string;
   }
 }
 
@@ -88,7 +90,15 @@ export default class PostulantesComponent {
   }
 
   viewProcess(element: any): void{
-    console.log(element);
+    window.location.href = 
+    'proceso-contratacion?candidateApplicationId=' + element.candidateApplicationId +
+    '&applicationDate=' + element.applicationDate +
+    '&jobOfferId=' + element.jobOffer +
+    '&userEntity=' + element.userEntity +
+    '&name=' + element.user.name +
+    '&lastName=' + element.user.lastName +
+    '&phone=' + element.user.phone +
+    '&email=' + element.user.email;
   }
 
 }

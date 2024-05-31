@@ -8,35 +8,63 @@
         <img class="img-user" src="assets/icons/user-2.svg" alt="User_icon">
         <div class="employee-info">
             <div class="item-info">
+                <p class="roboto-bold">Nombre de la postulación: </p>
+                <p class="roboto-regular" type="text" id="number">{{jobOfferName}}</p>
+            </div>
+            <div class="item-info">
                 <p class="roboto-bold">Postulante: </p>
-                <p class="roboto-regular" type="text" id="name">Jense David Martinez Tobón</p>
+                <p class="roboto-regular" type="text" id="name">{{name + " " + lastName}}</p>
             </div>
             <div class="item-info">
                 <p class="roboto-bold">Cedula: </p>
-                <p class="roboto-regular" type="text" id="cedula">1004685332</p>
+                <p class="roboto-regular" type="text" id="cedula">{{userEntity}}</p>
             </div>
             <div class="item-info">
                 <p class="roboto-bold">Teléfono: </p>
-                <p class="roboto-regular" type="text" id="number">3187213958</p>
+                <p class="roboto-regular" type="text" id="number">{{phone}}</p>
+            </div>
+            <div class="item-info">
+                <p class="roboto-bold">Correo: </p>
+                <p class="roboto-regular" type="text" id="email">{{email}}</p>
             </div>
             <div class="item-info">
                 <div class="item-info">
                     <p class="roboto-bold">Fecha de inicio: </p>
-                    <p class="roboto-regular" type="text" id="periodo">23/04/2024</p>
+                    <p class="roboto-regular" type="text" id="periodo">{{applicationDate}}</p>
                 </div>
             </div>
         </div>
 
-        <div class="acciones-proceso">
-            <ng-container *ngIf="step === 2">
+        <div class="acciones-proceso" *ngIf="'REJECTED' != applicationStatus && 'SELECTED'!=applicationStatus">
+            <ng-container *ngIf="step === 1">
                 <div class="item-accion">
                     <p class="roboto-bold">Acciones</p>
-                    <a href="" class="roboto-regular">Pruebas psicotécnicas</a>
+                    <a class="roboto-regular button-task" [ngClass]="estados[2] ? 'disabled' : ''" href="https://calendar.google.com/calendar/u/0/r/eventedit?vcon=meet&dates=now&hl=es&pli=1" target="_blank">Agendar Entrevista</a>
+                    <button class="roboto-regular button-task" [ngClass]="{'disabled': !estados[2] || estados[3]}" (click)="viewInterviewInfo()">Ingresar información de la entrevista</button>
+                    <button class="roboto-regular button-task" [ngClass]="{'disabled': !estados[3] || estados[4]}" (click)="viewInterviewResults()">Ingresar resultados de la entrevista</button>
                 </div>
                 <div class="item-accion">
                     <p class="roboto-bold">Estado</p>
                     <div class="icon-container">
-                        <img src="assets/icons/{{ estados[2] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(2)">
+                        <img  src="assets/icons/{{ estados[2] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(2)">
+                    </div>
+                    <div class="icon-container">
+                        <img [ngClass]="{'disabled': !estados[2] || estados[3]}" src="assets/icons/{{ estados[3] ? 'check-green' : 'required-document' }}.svg" alt="Estado">
+                    </div>
+                    <div class="icon-container">
+                        <img [ngClass]="{'disabled': !estados[3] || estados[4]}" src="assets/icons/{{ estados[4] ? 'check-green' : 'required-document' }}.svg" alt="Estado">
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="step === 2">
+                <div class="item-accion">
+                    <p class="roboto-bold">Acciones</p>
+                    <a href="" class="roboto-regular button-task"  [ngClass]="estados[5] ? 'disabled' : ''">Pruebas psicotécnicas</a>
+                </div>
+                <div class="item-accion">
+                    <p class="roboto-bold">Estado</p>
+                    <div class="icon-container">
+                        <img src="assets/icons/{{ estados[5] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(5)">
                     </div>
                 </div>
             </ng-container>
@@ -44,42 +72,35 @@
             <ng-container *ngIf="step === 3">
                 <div class="item-accion">
                     <p class="titulo roboto-bold">Acciones</p>
-                    <a href="" class="roboto-regular">Referencias laborales</a>
-                    <a href="" class="roboto-regular">Antecedentes</a>
+                    <a class="roboto-regular button-task" [ngClass]="{'disabled': estados[6]}"[attr.href]="'ver-perfil?cardId=' + userEntity" target="_blank">Referencias laborales</a>
+                    <a class="roboto-regular button-task" [ngClass]="{'disabled': estados[7]}"href="https://antecedentes.policia.gov.co:7005/WebJudicial/index.xhtml" target="_blank">Antecedentes</a>
                 </div>
                 <div class="item-accion">
                     <p class="titulo roboto-bold">Estado</p>
                     <div class="icon-container">
-                        <img src="assets/icons/{{ estados[3] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(3)">
-                        <img src="assets/icons/{{ estados[4] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(4)">
+                        <img src="assets/icons/{{ estados[6] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(6)">
+                        <img src="assets/icons/{{ estados[7] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(7)">
                     </div>
                 </div>
             </ng-container>
 
             <ng-container *ngIf="step === 4">
                 <div class="item-accion">
-                    <p class="roboto-bold">Tipo de ingreso</p>
-                    <a href="" class="roboto-regular">Directo</a>
-                    <a href="" class="roboto-regular">MISION PLUS</a>
-                </div>
-                <div class="item-accion">
-                    <p class="roboto-bold">Estado</p>
-                    <div class="icon-container">
-                        <img src="assets/icons/{{ estados[5] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(5)">
-                        <img src="assets/icons/{{ estados[6] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(6)">
-                    </div>
+                    <p class="roboto-bold">Seleccione el tipo de ingreso</p>
+                    <button class="roboto-regular button-task" [ngClass]="{'disabled': estados[8]}" (click)="toggleEstado(8)">Empresa</button>
+                    <button class="roboto-regular button-task" [ngClass]="{'disabled': estados[8]}" (click)="envioEmpresaTemporal('misionplus241@gmail.com')">MISION PLUS</button>
                 </div>
             </ng-container>
 
             <ng-container *ngIf="step === 5">
                 <div class="item-accion">
                     <p class="roboto-bold">Acciones</p>
-                    <a href="" class="roboto-regular">Solicitar documentación</a>
+                    <a [attr.href]="'ver-perfil?cardId=' + userEntity" class="roboto-regular button-task" [ngClass]="{'disabled': estados[9]}" target="_blank">Ver documentación</a>
                 </div>
                 <div class="item-accion">
                     <p class="roboto-bold">Estado</p>
                     <div class="icon-container">
-                        <img src="assets/icons/{{ estados[7] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(7)">
+                        <img src="assets/icons/{{ estados[9] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(9)">
                     </div>
                 </div>
             </ng-container>
@@ -87,12 +108,17 @@
             <ng-container *ngIf="step === 6">
                 <div class="item-accion">
                     <p class="roboto-bold">Acciones</p>
-                    <a href="" class="roboto-regular">Exámenes médicos</a>
+                    <button class="roboto-regular button-task" [ngClass]="{'disabled': estados[10]}" (click)="solicitudExamenMedico('misionplus241@gmail.com')"> Solicitar examen medio ocupacional</button>
+                    <label class="roboto-regular button-task" for="medic_exam"  [ngClass]="{'disabled': !estados[10] || estados[11]}">Subir Examen médico ocupacional</label>
+                    <input class="roboto-regular notView" type="file" name="medic_exam" id="medic_exam">
                 </div>
                 <div class="item-accion">
                     <p class="roboto-bold">Estado</p>
                     <div class="icon-container">
-                        <img src="assets/icons/{{ estados[8] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(8)">
+                        <img src="assets/icons/{{ estados[10] ? 'check-green' : 'required-document' }}.svg" alt="Estado">
+                    </div>
+                    <div class="icon-container">
+                        <img src="assets/icons/{{ estados[11] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(11)">
                     </div>
                 </div>
             </ng-container>
@@ -100,14 +126,12 @@
             <ng-container *ngIf="step === 7">
                 <div class="item-accion">
                     <p class="roboto-bold">Acciones</p>
-                    <a href="" class="roboto-regular">Realizar contrato</a>
-                    <a href="" class="roboto-regular">Archivar información del candidato</a>
+                    <button class="roboto-regular button-task"  [ngClass]="{'disabled': estados[12]}" (click)="realizarContrato()">Realizar contrato</button>
                 </div>
                 <div class="item-accion">
                     <p class="roboto-bold">Estado</p>
                     <div class="icon-container">
-                        <img src="assets/icons/{{ estados[9] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(9)">
-                        <img src="assets/icons/{{ estados[10] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(10)">
+                        <img src="assets/icons/{{ estados[12] ? 'check-green' : 'required-document' }}.svg" alt="Estado">
                     </div>
                 </div>
             </ng-container>
@@ -115,18 +139,18 @@
             <ng-container *ngIf="step === 8">
                 <div class="item-accion">
                     <p class="roboto-bold">Acción</p>
-                    <a href="" class="roboto-regular"> ARL COLPATRIA</a>
-                    <a href="" class="roboto-regular">CDC CONFAMILIAR</a>
-                    <a href="" class="roboto-regular">SOS SURA</a>
-                    <a href="" class="roboto-regular">EPS NUEVA EPS</a>
+                    <a class="roboto-regular button-task" [ngClass]="{'disabled': estados[13]}" href="https://www.axacolpatria.co/portalpublico-lf/inicio" target="_blank">ARL COLPATRIA</a>
+                    <a class="roboto-regular button-task" [ngClass]="{'disabled': estados[14]}" href="https://www.comfamiliar.com/" target="_blank">CDC CONFAMILIAR</a>
+                    <a class="roboto-regular button-task" [ngClass]="{'disabled': estados[15]}" href="https://www.epssura.com/" target="_blank">SOS SURA</a>
+                    <button class="roboto-regular button-task" [ngClass]="{'disabled': estados[16]}" (click)="enviarAfiliacionEPS('misionplus241@gmail.com')">COOMEVA EPS</button>
                 </div>
                 <div class="item-accion">
                     <p class="roboto-bold">Estado</p>
                     <div class="icon-container">
-                        <img src="assets/icons/{{ estados[11] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(11)">
-                        <img src="assets/icons/{{ estados[12] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(12)">
                         <img src="assets/icons/{{ estados[13] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(13)">
                         <img src="assets/icons/{{ estados[14] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(14)">
+                        <img src="assets/icons/{{ estados[15] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(15)">
+                        <img src="assets/icons/{{ estados[16] ? 'check-green' : 'required-document' }}.svg" alt="Estado">
                     </div>
 
                 </div>
@@ -135,19 +159,19 @@
             <ng-container *ngIf="step === 9">
                 <div class="item-accion">
                     <p class="roboto-bold">Acciones</p>
-                    <a href="" class="roboto-regular">Notificar</a>
+                    <button class="roboto-regular button-task" [ngClass]="{'disabled': estados[17]}" (click)="enviarNotificacion()" >Notificar</button>
                 </div>
                 <div class="item-accion">
                     <p class="roboto-bold">Estado</p>
                     <div class="icon-container">
-                        <img src="assets/icons/{{ estados[15] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(15)">
+                        <img src="assets/icons/{{ estados[17] ? 'check-green' : 'required-document' }}.svg" alt="Estado">
                     </div>
                 </div>
             </ng-container>
         </div>
     </div>
 
-    <form (submit)="onSubmit($event)">
+    <form (submit)="onSubmit($event)" *ngIf="'REJECTED' != applicationStatus && 'SELECTED'!=applicationStatus">
         <div class="progress">
             <div class="item" *ngFor="let stepNumber of steps; let i = index">
                 <p [ngClass]="{'active': step === i + 1}" class="number roboto-regular">{{ i + 1 }}</p>
@@ -160,23 +184,70 @@
         </div>
         
         <div class="button-group">
-            <button *ngIf="step === 1" type="submit" class="submit-button roboto-medium" (click)="nextStep()">Habilitar pruebas psicotécnicas</button>
-            <button *ngIf="step === 2" type="submit" class="submit-button roboto-medium" (click)="nextStep()">Empezar verificaciones</button>
-            <button *ngIf="step === 3" type="submit" class="submit-button roboto-medium" (click)="nextStep()">Definir tipo de ingreso</button>
-            <button *ngIf="step === 4" type="submit" class="submit-button roboto-medium" (click)="nextStep()">Revisar documentos</button>
-            <button *ngIf="step === 5" type="submit" class="submit-button roboto-medium" (click)="nextStep()">Agendar exámenes médicos</button>
-            <button *ngIf="step === 6" type="submit" class="submit-button roboto-medium" (click)="nextStep()">Realizar contrato</button>
-            <button *ngIf="step === 7" type="submit" class="submit-button roboto-medium" (click)="nextStep()">Realizar afiliaciones</button>
-            <button *ngIf="step === 8" type="submit" class="submit-button roboto-medium" (click)="nextStep()">Finalizar proceso</button>
-            <button *ngIf="step === 9" class="submit-button roboto-medium" (click)="nextStep()">Finalizar</button>
-            
-            <div *ngIf="step === 10" class="container">
-                <h3 class="roboto-regular">Proceso completado</h3>
-                <a href="" class="submit-button roboto-medium" (click)="reloadPage($event)">Realizar otra acción</a>
-            </div>
+            <button *ngIf="step === 1" type="submit" class="submit-button roboto-medium" (click)="nextStep()" [ngClass]="estados[4] ? '' : 'disabled'">Habilitar pruebas psicotécnicas</button>
+            <button *ngIf="step === 2" type="submit" class="submit-button roboto-medium" (click)="nextStep()" [ngClass]="estados[5] ? '' : 'disabled'">Empezar verificaciones</button>
+            <button *ngIf="step === 3" type="submit" class="submit-button roboto-medium" (click)="nextStep()" [ngClass]="{'disabled': !estados[6] || !estados[7]}">Definir tipo de ingreso</button>
+            <button *ngIf="step === 4" type="submit" class="submit-button roboto-medium" (click)="nextStep()" [ngClass]="estados[8] ? '' : 'disabled'">Revisar documentos</button>
+            <button *ngIf="step === 5" type="submit" class="submit-button roboto-medium" (click)="nextStep()" [ngClass]="estados[9] ? '' : 'disabled'">Agendar exámenes médicos</button>
+            <button *ngIf="step === 6" type="submit" class="submit-button roboto-medium" (click)="nextStep()" [ngClass]="estados[11] ? '' : 'disabled'">Realizar contrato</button>
+            <button *ngIf="step === 7" type="submit" class="submit-button roboto-medium" (click)="nextStep()" [ngClass]="estados[12] ? '' : 'disabled'">Realizar afiliaciones</button>
+            <button *ngIf="step === 8" type="submit" class="submit-button roboto-medium" (click)="nextStep()" [ngClass]="{'disabled': !estados[13] || !estados[14] || !estados[15] || !estados[16]}">Finalizar proceso</button>
+            <button *ngIf="step === 9" class="submit-button roboto-medium" (click)="nextStep()" [ngClass]="estados[17]? '' : 'disabled'">Finalizar</button>
 
             <!-- Botón de Cancelar -->
             <button type="button" class="cancel-button roboto-medium" (click)="cancelProcess()">Cancelar proceso</button>
         </div>
     </form>
+
+    <div *ngIf="'REJECTED' == applicationStatus">
+        <h1 class="roboto-bold">Proceso de contratación finalizado. Se canceló o se envió a la empresa MISION PLUS</h1>
+    </div>
+    <div *ngIf="'SELECTED' == applicationStatus">
+        <h1 class="roboto-bold">Proceso de contratación finalizado. Se ha contratado al candidado.</h1>
+    </div>
+    <div class="container-form" [ngClass]="viewInterviewInfoForm ? '' : 'notView'">
+        <form [formGroup]="InterviewInfoForm" (ngSubmit)="onSubmitInterviewInfo()">
+            <h1 class="roboto-bold">Información de la entrevista</h1>
+            <div class="form-group">
+                <label class="roboto-regular" for="interviewDate">Fecha de la entrevista</label>
+                <input class="roboto-regular" type="date" id="interviewDate" formControlName="interviewDate" required>
+            </div>
+            <div class="form-group">
+                <label class="roboto-regular" for="interviewTime">Hora de la entrevista</label>
+                <input class="roboto-regular" type="time" id="interviewTime" formControlName="interviewTime" required>
+            </div>
+            <div class="form-group">
+                <label class="roboto-regular" for="link">Link de google meet</label>
+                <input class="roboto-regular" type="text" id="link" formControlName="link" placeholder="Link de google meet donde se realizará la entrevista" required>
+            </div>
+            <div class="form-group">
+                <label for="interviewType" class="roboto-regular">Ingresar el tipo de entrevista</label>
+                <select class="roboto-regular" formControlName="interviewType" id="interviewType">
+                    <option class="roboto-regular" value="INITIAL">Primera entrevista</option>
+                    <option class="roboto-regular" value="MANAGEMENT">Gestion</option>
+                </select>
+            </div>
+            <button class="roboto-medium button-task" (click)="viewInterviewInfo()">Ingresar información</button>
+        </form>
+        <button class="cancel-button roboto-medium" (click)="viewInterviewInfo()">Cancelar</button>
+    </div>
+
+    <div class="container-form" [ngClass]="viewInterviewResultsForm ? '' : 'notView'">
+        <form [formGroup]="InterviewResultsForm" (ngSubmit)="onSubmitInterviewResults()">
+            <h1 class="roboto-bold">Resultados de la entrevista</h1>
+            <div class="form-group">
+                <label for="interviewStatus" class="roboto-regular">Seleccione una opcion de como terminó la entrevista</label>
+                <select class="roboto-regular" formControlName="interviewStatus" id="interviewStatus">
+                    <option class="roboto-regular" value="COMPLETED">Entrevista realizada</option>
+                    <option class="roboto-regular" value="CANCELLED">Entrevista cancelada</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="roboto-regular" for="result">Ingrese los resultados de la entrevista</label>
+                <textarea formControlName="result" id="result" maxlength="500" class="roboto-regular"></textarea>
+            </div>
+            <button class="roboto-medium button-task" (click)="viewInterviewResults()">Ingresar información</button>
+        </form>
+        <button class="cancel-button roboto-medium" (click)="viewInterviewResults()">Cancelar</button>
+    </div>
 </div>

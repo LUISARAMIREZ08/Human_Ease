@@ -1,6 +1,7 @@
 package com.example.server.controller;
 
 import com.example.server.controller.request.CandidateApplicationRequestDTO;
+import com.example.server.controller.request.CandidateApplicationUpdateRequestDTO;
 import com.example.server.entity.CandidateApplications;
 import com.example.server.services.CandidateApplicationsServices;
 import lombok.RequiredArgsConstructor;
@@ -33,5 +34,8 @@ public class CandidateApplicationsController {
         return this.candidateApplicationsServices.saveCandidateApplication(candidateApplicationRequestDTO);
     }
 
-
+    @PutMapping("/updateStatus")
+    public CandidateApplicationRequestDTO updateApplicationStatus(@RequestBody CandidateApplicationUpdateRequestDTO request) {
+        return this.candidateApplicationsServices.updateApplicationStatus(request);
+    }
 }

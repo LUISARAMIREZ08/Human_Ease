@@ -1,6 +1,8 @@
 package com.example.server.services;
 
 import com.example.server.controller.request.InterviewRequestDTO;
+import com.example.server.controller.request.InterviewUpdateRequestDTO;
+import com.example.server.controller.response.InterviewResponseDTO;
 import com.example.server.entity.CandidateApplications;
 import com.example.server.entity.Interviews;
 import com.example.server.entity.enums.InterviewStatus;
@@ -36,6 +38,7 @@ public class InterviewsServices {
         dto.setInterviewDate(interviews.getInterviewDate().toString());
         dto.setInterviewTime(interviews.getInterviewTime());
         dto.setResult(interviews.getResult());
+        dto.setLink(interviews.getLink());
         dto.setInterviewStatus(interviews.getInterviewStatus().name());
         dto.setInterviewType(interviews.getInterviewType().name());
         dto.setCandidateApplicationId(interviews.getCandidateApplications().getCandidateApplicationId());
@@ -55,16 +58,43 @@ public class InterviewsServices {
         interviews.setInterviewDate(LocalDate.parse(request.getInterviewDate()));
         interviews.setInterviewTime(request.getInterviewTime());
         interviews.setResult(request.getResult());
+        interviews.setLink(request.getLink());
         interviews.setInterviewStatus(InterviewStatus.valueOf(request.getInterviewStatus()));
         interviews.setInterviewType(InterviewType.valueOf(request.getInterviewType()));
-        interviews.setCandidateApplications(findAplication(request.getCandidateApplicationId()));
+        interviews.setCandidateApplications(findApplication(request.getCandidateApplicationId()));
         Interviews saveInterview = interviewsRepository.save(interviews);
         return toDTO(saveInterview);
     }
 
-    private CandidateApplications findAplication(Long candidateApplicationId) {
-        Optional<CandidateApplications> candidateApplications =
-                candidateApplicationsRepository.findById(candidateApplicationId);
-        return candidateApplications.get();
+    private CandidateApplications findApplication(Long candidateApplicationId) {
+        return candidateApplicationsRepository.findById(candidateApplicationId)
+                .orElseThrow(() -> new RuntimeException("Candidate Application not found"));
+    }
+
+    public InterviewResponseDTO updateInterviewByCandidateApplication(InterviewUpdateRequestDTO request) {
+        Optional<Interviews> optionalInterview = interviewsRepository.findByCandidateApplicationId(request.getCandidateApplicationId());
+
+        if (optionalInterview.isPresent()) {
+            Interviews interview = optionalInterview.get();
+            interview.setResult(request.getResult());
+            interview.setInterviewStatus(InterviewStatus.valueOf(request.getInterviewStatus()));
+            Interviews updatedInterview = interviewsRepository.save(interview);
+            return toResponseDTO(updatedInterview);
+        } else {
+            throw new RuntimeException("Interview not found for the provided Candidate Application");
+        }
+    }
+
+    private InterviewResponseDTO toResponseDTO(Interviews interview) {
+        return new InterviewResponseDTO(
+                interview.getInterviewId(),
+                interview.getInterviewDate().toString(),
+                interview.getInterviewTime(),
+                interview.getResult(),
+                interview.getLink(),
+                interview.getInterviewStatus().name(),
+                interview.getInterviewType().name(),
+                interview.getCandidateApplications().getCandidateApplicationId()
+        );
     }
 }

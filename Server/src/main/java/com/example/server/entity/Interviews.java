@@ -28,6 +28,9 @@ public class Interviews {
     @Column(name="interview_result", nullable = false, length = 100)
     private String result;
 
+    @Column(name="interview_link", nullable = false, length = 500)
+    private String link;
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private InterviewStatus interviewStatus;
