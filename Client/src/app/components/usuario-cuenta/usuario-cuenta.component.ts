@@ -6,7 +6,6 @@ import { LoginService } from '../../services/login.service';
 import { FileUploadService } from '../../services/file-upload.service';
 import { ApiService } from '../../services/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Action } from 'rxjs/internal/scheduler/Action';
 
 @Component({
   selector: 'app-usuario-cuenta',
