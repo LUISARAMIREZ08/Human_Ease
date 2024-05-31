@@ -22,6 +22,8 @@ public class JobOfferRequestDTO {
     @NotNull
     public String jobOfferStatus;
     @NotNull
+    public Float salary;
+    @NotNull
     public Long positionId;
     @NotNull
     public Long employeeId;

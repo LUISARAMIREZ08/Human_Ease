@@ -34,6 +34,9 @@ public class JobOffer {
     @Enumerated(EnumType.STRING)
     private JobOfferStatus jobOfferStatus;
 
+    @Column(name="salary", nullable = false)
+    private Float salary;
+
     @ManyToOne(targetEntity = Position.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "position_id", nullable = false)
     private Position position;
