@@ -30,6 +30,6 @@ public class PsycoController {
 
     @PostMapping
     public PsycotechnicalTestRequestDTO savePsychotechnicalTest(@RequestBody PsycotechnicalTestRequestDTO request) {
-        return psychotechnicalServices.savePsychotechnicalTest(request);
+        return psychotechnicalServices.savePsychotechnicalTest(request, new PsychotechnicalTests());
     }
 }

@@ -16,6 +16,7 @@ public class JobOfferResponseDTO {
     public String jobOfferDate;
     public String jobOfferExpirationDate;
     public String jobOfferStatus;
+    public Float salary;
     public Long positionId;
     public Long employeeId;
 }

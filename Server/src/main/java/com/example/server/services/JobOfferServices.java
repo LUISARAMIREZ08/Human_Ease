@@ -44,6 +44,7 @@ public class JobOfferServices {
         dto.setJobOfferDate(jobOffer.getJobOfferDate().toString());
         dto.setJobOfferExpirationDate(jobOffer.getJobOfferExpirationDate().toString());
         dto.setJobOfferStatus(jobOffer.getJobOfferStatus().name());
+        dto.setSalary(jobOffer.getSalary());
         dto.setPositionId(jobOffer.getPosition().getPositionId());
         dto.setEmployeeId(jobOffer.getEmployee().getEmployeeId());
 
@@ -73,6 +74,7 @@ public class JobOfferServices {
         jobOffer.setJobOfferDate(LocalDate.parse(request.getJobOfferDate()));
         jobOffer.setJobOfferExpirationDate(LocalDate.parse(request.getJobOfferExpirationDate()));
         jobOffer.setJobOfferStatus(JobOfferStatus.valueOf(request.getJobOfferStatus()));
+        jobOffer.setSalary(request.getSalary());
         jobOffer.setPosition(findPosition(request.getPositionId()));
         jobOffer.setEmployee(findEmployee(request.getEmployeeId()));
     }

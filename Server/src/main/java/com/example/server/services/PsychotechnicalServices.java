@@ -51,22 +51,20 @@ public class PsychotechnicalServices {
     }
 
     //This method save a psychotechnical test
-    public PsycotechnicalTestRequestDTO savePsychotechnicalTest(PsycotechnicalTestRequestDTO request) {
-        Optional<CandidateApplications> candidateApplicationsOpt = candidateApplicationsRepository.findById(request.getCandidateApplicationId());
-        if (!candidateApplicationsOpt.isPresent()) {
-            throw new IllegalArgumentException("Candidate Application ID not found: " + request.getCandidateApplicationId());
+    public PsycotechnicalTestRequestDTO savePsychotechnicalTest(PsycotechnicalTestRequestDTO request, PsychotechnicalTests psyco) {
+        Optional<CandidateApplications> optionalCandidateApplications = candidateApplicationsRepository.findById(request.getCandidateApplicationId());
+
+        if(optionalCandidateApplications.isPresent()) {
+            psyco.setTestType(request.getTestType());
+            psyco.setTestDate(LocalDate.parse(request.getTestDate()));
+            psyco.setTestTime(request.getTestTime());
+            psyco.setTestResult(request.getTestResult());
+            psyco.setCandidateApplications(optionalCandidateApplications.get());
+            psychotechnicalTestsRepository.save(psyco);
+            PsychotechnicalTests savedPsyco = psychotechnicalTestsRepository.save(psyco);
+            return toDTO(savedPsyco);
+        } else {
+            throw new RuntimeException("CandidateApplications con id " + request.getCandidateApplicationId() + " no existe.");
         }
-
-        CandidateApplications candidateApplications = candidateApplicationsOpt.get();
-
-        PsychotechnicalTests psyco = new PsychotechnicalTests();
-        psyco.setTestType(request.getTestType());
-        psyco.setTestDate(LocalDate.parse(request.getTestDate()));
-        psyco.setTestTime(request.getTestTime());
-        psyco.setTestResult(request.getTestResult());
-        psyco.setCandidateApplications(candidateApplications);
-
-        PsychotechnicalTests savedPsyco = psychotechnicalTestsRepository.save(psyco);
-        return toDTO(savedPsyco);
     }
 }
