@@ -13,6 +13,7 @@ export interface position{
   namePosition: string;
   departmentId: number;
   employmentTime: string;
+  salary: number;
   levelOfExperience: string;
   department: {
     departmentId: number;
@@ -74,6 +75,7 @@ export default class CrearPostulacionComponent {
       jobOfferDescription: new FormControl('', [Validators.required]),
       jobOfferDate: new FormControl('', [Validators.required]),
       jobOfferExpirationDate: new FormControl('', [Validators.required]),
+      salary: new FormControl('', [Validators.required]),
       jobOfferStatus: 'ACTIVE',
       positionId: new FormControl('', [Validators.required]),
       employeeId: new FormControl('', [Validators.required])
