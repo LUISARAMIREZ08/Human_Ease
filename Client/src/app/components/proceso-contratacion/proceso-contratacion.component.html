@@ -59,7 +59,7 @@
             <ng-container *ngIf="step === 2">
                 <div class="item-accion">
                     <p class="roboto-bold">Acciones</p>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdd3eZ4aomOqJFFjje2gH707RxEpLtWqyk_0rUGmwtLIhLuAw/viewform?usp=sf_link" class="roboto-regular button-task"  [ngClass]="estados[5] ? 'disabled' : ''">Pruebas psicotécnicas</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdd3eZ4aomOqJFFjje2gH707RxEpLtWqyk_0rUGmwtLIhLuAw/viewform?usp=sf_link" class="roboto-regular button-task"  [ngClass]="estados[5] ? 'disabled' : ''" target="_blank">Pruebas psicotécnicas</a>
                 </div>
                 <div class="item-accion">
                     <p class="roboto-bold">Estado</p>
@@ -95,12 +95,12 @@
             <ng-container *ngIf="step === 5">
                 <div class="item-accion">
                     <p class="roboto-bold">Acciones</p>
-                    <a [attr.href]="'ver-perfil?cardId=' + userEntity" class="roboto-regular button-task" [ngClass]="{'disabled': estados[9]}" target="_blank">Ver documentación</a>
+                    <a [attr.href]="'ver-perfil?cardId=' + userEntity" class="roboto-regular button-task" target="_blank">Ver documentación</a>
                 </div>
                 <div class="item-accion">
                     <p class="roboto-bold">Estado</p>
                     <div class="icon-container">
-                        <img src="assets/icons/{{ estados[9] ? 'check-green' : 'required-document' }}.svg" alt="Estado" (click)="toggleEstado(9)">
+                        <img src="assets/icons/{{ estados[9] ? 'check-green' : 'required-document' }}.svg" alt="Estado">
                     </div>
                 </div>
             </ng-container>
@@ -110,7 +110,7 @@
                     <p class="roboto-bold">Acciones</p>
                     <button class="roboto-regular button-task" [ngClass]="{'disabled': estados[10]}" (click)="solicitudExamenMedico('misionplus241@gmail.com')"> Solicitar examen medio ocupacional</button>
                     <label class="roboto-regular button-task" for="medic_exam"  [ngClass]="{'disabled': !estados[10] || estados[11]}">Subir Examen médico ocupacional</label>
-                    <input class="roboto-regular notView" type="file" name="medic_exam" id="medic_exam">
+                    <input class="roboto-regular notView" type="file" name="medic_exam" id="medic_exam" (change)="uploadFile($event, 'medicalExam')">
                 </div>
                 <div class="item-accion">
                     <p class="roboto-bold">Estado</p>

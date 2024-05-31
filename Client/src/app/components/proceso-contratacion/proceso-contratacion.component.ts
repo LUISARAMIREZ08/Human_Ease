@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import HeaderComponent from '../header/header.component';
 import BarraHerramientasComponent from '../barra-herramientas/barra-herramientas.component';
 import { ApiService } from '../../services/api.service';
+import { FileUploadService } from '../../services/file-upload.service';
 
 @Component({
   selector: 'app-proceso-contratacion',
@@ -15,12 +16,14 @@ import { ApiService } from '../../services/api.service';
   templateUrl: './proceso-contratacion.component.html',
   styleUrls: ['./proceso-contratacion.component.css']
 })
+
 export default class ProcesoContratacionComponent {
   constructor(
     private api: ApiService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder, 
     private snack: MatSnackBar,
+    private fileUpload: FileUploadService,
   ) { }
 
   InterviewInfoForm!: FormGroup;
@@ -28,6 +31,20 @@ export default class ProcesoContratacionComponent {
 
   viewInterviewInfoForm: boolean = false;
   viewInterviewResultsForm: boolean = false;
+
+  documents: any;
+
+  documentsStatus = {
+    // true = documento subido, false = documento pendiente 
+    hojaDeVida: false, //Toca que sea false por defecto, pero por ahora lo dejo en true para probar
+    fotocopiaCedula: false,
+    certificadosFormacion: false,
+    certificadoEPS: false,
+    libretaMilitar: false,
+    certificadoEducacion: false,
+    cartasExperienciaLaboral: false,
+    documentosBeneficiarios: false,
+  }
 
   candidateApplicationId: any;
   applicationStatus: any;
@@ -101,6 +118,11 @@ export default class ProcesoContratacionComponent {
           this.step = 4;
         } else if (this.applicationStatus == 'DOCUMENTATION'){
           this.step = 5;
+          this.verifyDocumentsStatus();
+          //Si estan todos los documentos se habilita el siguiente paso
+          if (this.documentsStatus.hojaDeVida && this.documentsStatus.fotocopiaCedula && this.documentsStatus.certificadosFormacion && this.documentsStatus.certificadoEPS && this.documentsStatus.libretaMilitar && this.documentsStatus.certificadoEducacion && this.documentsStatus.cartasExperienciaLaboral && this.documentsStatus.documentosBeneficiarios){
+            this.estados[9] = true;
+          }
         } else if (this.applicationStatus == 'MEDICAL_EXAM'){
           this.step = 6;
         } else if (this.applicationStatus == 'EMPLOYMENT_CONTRACT'){
@@ -138,6 +160,93 @@ export default class ProcesoContratacionComponent {
         this.jobOfferDescription = data.jobOfferDescription;
       });
     }
+
+    //Obtener los documentos de la postulación
+    if(typeof localStorage !== 'undefined'){
+      this.api.getAPI("documents/person/"+this.userEntity).subscribe((data: any) => {
+        this.documents = data;
+        this.documents.forEach((document: any) => {
+          if (document.documentName == 'medicalExam'){
+            this.estados[10] = true;
+            this.estados[11] = true;
+          }
+        });
+      });
+    }
+  }
+
+  uploadFile(event: Event, documentName: string){
+    this.snack.open("El documento se está subiendo."),{
+      duration:3000
+    }
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+
+      const existingDocument = this.documents.find((document: any) => document.documentName === documentName);
+
+      if(existingDocument){
+        this.fileUpload.uploadFile(file, documentName).subscribe(url => {
+          try {
+            const document = {
+              documentName: documentName,
+              documentPath: url
+            };
+            this.api.putAPI("documents/"+existingDocument.documentId, document).subscribe((data: any) => {
+              this.delay(2000);
+              this.snack.open("Se ha actualizado el documento.", "Aceptar"),{
+                duration:3000
+              }
+            });
+          } catch (Error) {
+            this.snack.open("Error al actualizar el documento, vuelva a intentar.", "Aceptar"),{
+              duration:3000
+            }
+          }
+        });
+      } else {
+        this.fileUpload.uploadFile(file, documentName).subscribe(url => {
+          try {
+            const document = {
+              documentName: documentName,
+              documentPath: url,
+              cardId: this.userEntity
+            };
+            this.api.postAPI("documents", document).subscribe((data: any) => {
+              this.delay(2000);
+              window.location.reload();
+            });
+          } catch (Error) {
+            console.error('Error al subir el archivo: ', Error);
+          }
+        });
+      }
+    }
+  }
+  async delay(ms: number) {
+    await new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  verifyDocumentsStatus(){
+    this.documents.forEach((document: any) => {
+      if (document.documentName === 'hojaDeVida') {
+        this.documentsStatus.hojaDeVida = true;
+      } else if (document.documentName === 'fotocopiaCedula') {
+        this.documentsStatus.fotocopiaCedula = true;
+      } else if (document.documentName === 'certificadosFormacion') {
+        this.documentsStatus.certificadosFormacion = true;
+      } else if (document.documentName === 'certificadoEPS') {
+        this.documentsStatus.certificadoEPS = true;
+      } else if (document.documentName === 'libretaMilitar') {
+        this.documentsStatus.libretaMilitar = true;
+      } else if (document.documentName === 'certificadoEducacion') {
+        this.documentsStatus.certificadoEducacion = true;
+      } else if (document.documentName === 'cartasExperienciaLaboral') {
+        this.documentsStatus.cartasExperienciaLaboral = true;
+      } else if (document.documentName === 'documentosBeneficiarios') {
+        this.documentsStatus.documentosBeneficiarios = true;
+      }
+    });
   }
 
   changeStateApplication(state: string){
@@ -172,6 +281,11 @@ export default class ProcesoContratacionComponent {
         this.changeStateApplication('TYPE_ENTRY')
       } else if (this.step == 4){
         this.changeStateApplication('DOCUMENTATION')
+        this.verifyDocumentsStatus();
+        //Si estan todos los documentos se habilita el siguiente paso
+        if (this.documentsStatus.hojaDeVida && this.documentsStatus.fotocopiaCedula && this.documentsStatus.certificadosFormacion && this.documentsStatus.certificadoEPS && this.documentsStatus.libretaMilitar && this.documentsStatus.certificadoEducacion && this.documentsStatus.cartasExperienciaLaboral && this.documentsStatus.documentosBeneficiarios){
+          this.estados[9] = true;
+        }
       } else if (this.step == 5){
         this.changeStateApplication('MEDICAL_EXAM')
       } else if (this.step == 6){
