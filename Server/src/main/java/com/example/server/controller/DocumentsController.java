@@ -3,6 +3,7 @@ package com.example.server.controller;
 import com.example.server.controller.request.CreateDocumentsDTO;
 import com.example.server.entity.Documents;
 import com.example.server.services.DocumentsServices;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/documents")
+@RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class DocumentsController {
     @Autowired
     private DocumentsServices documentsServices;

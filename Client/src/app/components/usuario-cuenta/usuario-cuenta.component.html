@@ -60,7 +60,7 @@
                 <h3 class="roboto-medium">Hoja de vida</h3>
             </div>
             <label class="roboto-medium" for="hoja-de-vida">{{ documentsStatus.hojaDeVida ? 'Actualizar' : 'Adjuntar archivo' }} <img src="assets/icons/file.svg" alt="file"></label>
-            <input class="roboto-medium" type="file" id="hoja-de-vida">
+            <input class="roboto-medium" type="file" id="hoja-de-vida" (change)="uploadFile($event, 'hojaDeVida')">
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
@@ -73,7 +73,7 @@
                 <h3 class="roboto-medium">Libreta militar</h3>
             </div>
             <label class="roboto-medium" for="libreta-militar">{{ documentsStatus.libretaMilitar ? 'Actualizar' : 'Adjuntar archivo' }} <img src="assets/icons/file.svg" alt="file"></label>
-            <input class="roboto-medium" type="file" id="libreta-militar">
+            <input class="roboto-medium" type="file" id="libreta-militar" (change)="uploadFile($event, 'libretaMilitar')">
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
@@ -86,7 +86,7 @@
                 <h3 class="roboto-medium">Fotocopia de cedula</h3>
             </div>
             <label class="roboto-medium" for="fotocopia-cedula">{{ documentsStatus.fotocopiaCedula ? 'Actualizar' : 'Adjuntar archivo' }} <img src="assets/icons/file.svg" alt="file"></label>
-            <input class="roboto-medium" type="file" id="fotocopia-cedula">
+            <input class="roboto-medium" type="file" id="fotocopia-cedula" (change)="uploadFile($event, 'fotocopiaCedula')">
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
@@ -99,7 +99,7 @@
                 <h3 class="roboto-medium">Certificados de educación</h3>
             </div>
             <label class="roboto-medium" for="certificados-educacion">{{ documentsStatus.certificadoEducacion ? 'Actualizar' : 'Adjuntar archivo' }} <img src="assets/icons/file.svg" alt="file"></label>
-            <input class="roboto-medium" type="file" id="certificados-educacion">
+            <input class="roboto-medium" type="file" id="certificados-educacion" (change)="uploadFile($event, 'certificadoEducacion')">
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
@@ -112,7 +112,7 @@
                 <h3 class="roboto-medium">Certificados de formación</h3>
             </div>
             <label class="roboto-medium" for="certificados-formacion">{{ documentsStatus.certificadosFormacion ? 'Actualizar' : 'Adjuntar archivo' }} <img src="assets/icons/file.svg" alt="file"></label>
-            <input class="roboto-medium" type="file" id="certificados-formacion">
+            <input class="roboto-medium" type="file" id="certificados-formacion" (change)="uploadFile($event, 'certificadosFormacion')">
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
@@ -125,7 +125,7 @@
                 <h3 class="roboto-medium">Cartas de experiencia laboral</h3>
             </div>
             <label class="roboto-medium" for="cartas-experiencia-laboral">{{ documentsStatus.cartasExperienciaLaboral ? 'Actualizar' : 'Adjuntar archivo' }} <img src="assets/icons/file.svg" alt="file"></label>
-            <input class="roboto-medium" type="file" id="cartas-experiencia-laboral">
+            <input class="roboto-medium" type="file" id="cartas-experiencia-laboral" (change)="uploadFile($event, 'cartasExperienciaLaboral')">
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
@@ -138,20 +138,20 @@
                 <h3 class="roboto-medium">Certificado de EPS</h3>
             </div>
             <label class="roboto-medium" for="certificado-eps">{{ documentsStatus.certificadoEPS ? 'Actualizar' : 'Adjuntar archivo' }} <img src="assets/icons/file.svg" alt="file"></label>
-            <input class="roboto-medium" type="file" id="certificado-eps">
+            <input class="roboto-medium" type="file" id="certificado-eps" (change)="uploadFile($event, 'certificadoEPS')">
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
         <div class="document">
             <div class="document-title">
-                <img *ngIf="documentsStatus.docuemtosBeneficiarios; else noFile" src="assets/icons/check-green.svg" alt="Subido" class="status-icon">
+                <img *ngIf="documentsStatus.documentosBeneficiarios; else noFile" src="assets/icons/check-green.svg" alt="Subido" class="status-icon">
                 <ng-template #noFile>
                     <img src="assets/icons/required-document.svg" alt="Documento requerido" class="status-icon">
                 </ng-template>
                 <h3 class="roboto-medium">Documento de beneficiarios</h3>
             </div>
-            <label class="roboto-medium" for="documento-beneficiarios">{{ documentsStatus.docuemtosBeneficiarios ? 'Actualizar' : 'Adjuntar archivo' }} <img src="assets/icons/file.svg" alt="file"></label>
-            <input type="file" id="documento-beneficiarios">
+            <label class="roboto-medium" for="documento-beneficiarios">{{ documentsStatus.documentosBeneficiarios ? 'Actualizar' : 'Adjuntar archivo' }} <img src="assets/icons/file.svg" alt="file"></label>
+            <input type="file" id="documento-beneficiarios" (change)="uploadFile($event, 'documentosBeneficiarios')">
         </div>
     </mat-grid-tile>
 </mat-grid-list>
