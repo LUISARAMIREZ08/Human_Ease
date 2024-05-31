@@ -20,6 +20,8 @@ public class InterviewRequestDTO {
     @NotNull
     public String result;
     @NotNull
+    public String link;
+    @NotNull
     public String interviewStatus;
     @NotNull
     public String interviewType;

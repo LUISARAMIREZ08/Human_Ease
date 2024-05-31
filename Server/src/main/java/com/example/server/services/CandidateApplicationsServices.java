@@ -1,6 +1,7 @@
 package com.example.server.services;
 
 import com.example.server.controller.request.CandidateApplicationRequestDTO;
+import com.example.server.controller.request.CandidateApplicationUpdateRequestDTO;
 import com.example.server.controller.request.NoveltyRequestDTO;
 import com.example.server.entity.CandidateApplications;
 import com.example.server.entity.JobOffer;
@@ -35,6 +36,8 @@ public class CandidateApplicationsServices {
                 .map(this::toDTO)
                 .collect(Collectors.toList());
     }
+
+
 
     private CandidateApplicationRequestDTO toDTO(CandidateApplications candidateApplications) {
         CandidateApplicationRequestDTO dto = new CandidateApplicationRequestDTO();
@@ -77,5 +80,16 @@ public class CandidateApplicationsServices {
         candidateApplicationsNew.setUserEntity(userRepository.findById(candidateApplicationRequestDTO.getUserEntity()).get());
         candidateApplicationsNew.setJobOffer(jobOfferRepository.findById(candidateApplicationRequestDTO.getJobOffer()).get());
         return toDTO(candidateApplicationsRepository.save(candidateApplicationsNew));
+    }
+
+
+    // Este método actualiza el estado de la aplicación de un candidato
+    public CandidateApplicationRequestDTO updateApplicationStatus(CandidateApplicationUpdateRequestDTO request) {
+        CandidateApplications candidateApplication = candidateApplicationsRepository.findById(request.getCandidateApplicationId())
+                .orElseThrow(() -> new RuntimeException("Candidate Application not found"));
+
+        candidateApplication.setApplicationStatus(ApplicationStatus.valueOf(request.getApplicationStatus()));
+        CandidateApplications updatedCandidateApplication = candidateApplicationsRepository.save(candidateApplication);
+        return toDTO(updatedCandidateApplication);
     }
 }

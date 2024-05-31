@@ -63,11 +63,12 @@ form{
     margin-right: 20px;
 }
 
-.form-group input{
+.form-group input, select, textarea{
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1em;
+    margin-left: 10px;
 }
 
 .progress {
@@ -181,13 +182,13 @@ form{
 }
 
 .item-accion {
-  height: max-content;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
 }
 
 .item-accion img {
+    margin-bottom: 40%;
     width: 25px;
     height: 25px;
     padding-left: 25%;
@@ -200,9 +201,60 @@ form{
     flex-direction: column;
 }
 
-.item-accion a {
+.button-task{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
+    background-color: #004466;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
     margin-bottom: 5px;
-    color: black;
 }
 
+.button-task:hover {
+    background-color: #00334d;
+}
+
+.disabled {
+    background-color: #ccc;
+    color: white;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.disabled:hover {
+    background-color: #ccc;
+}
+
+.container-form{
+    display: flex;
+    position: fixed; /* Para que esté en relación con la ventana del navegador */
+    top: 50%; /* Moverlo al centro verticalmente */
+    left: 50%; /* Moverlo al centro horizontalmente */
+    transform: translate(-50%, -50%); /* Ajustar el centro */
+    z-index: 1000; /* Asegurarse de que esté en el primer plano */
+    background-color: white; /* Fondo blanco para distinguirlo */
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra para efecto de elevación */
+    border-radius: 8px; /* Bordes redondeados (opcional) */
+
+    flex-direction: column;
+    width: 60%;
+    margin: 0 auto;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.container-form form{
+    padding: 0px;
+}
+
+.notView{
+    display: none;
+}
