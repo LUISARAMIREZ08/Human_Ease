@@ -1,6 +1,6 @@
 ﻿# Human_Ease
 
- Human_Ease es una plataforma integral de gestión de recursos humanos que facilita la administración de empleados, procesos de contratación y otros aspectos clave en la gestión del talento dentro de una organización.
+ Human Ease es una plataforma integral de gestión de recursos humanos que facilita la administración de empleados, procesos de contratación y otros aspectos clave en la gestión del talento dentro de una organización.
 
 ## Características Principales
 
