@@ -18,7 +18,7 @@
 
 * Frontend: Angular
 
-* Base de Datos: PostgreSQL
+* Base de Datos: MySQL
 
 * Autenticación: JWT (JSON Web Tokens)
 
